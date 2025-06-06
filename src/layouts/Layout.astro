@@ -1,3 +1,7 @@
+---
+import CookieConsent from "../components/CookieConsent.astro";
+---
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -13,25 +17,70 @@
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio de Álvaro, desarrollador web. Descubre mis proyectos, experiencia y habilidades." />
+    <meta name="keywords" content="desarrollo web, ciberseguridad, portfolio, Álvaro, programación, frontend, backend" />
+    <meta name="author" content="Álvaro" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alvaroso.dev/" />
+    <meta property="og:title" content="Alvaroso | Mi portafolio" />
+    <meta property="og:description" content="Portfolio de Álvaro, desarrollador web y especialista en ciberseguridad." />
+    <meta property="og:image" content="https://alvaroso.dev/portfolio_preview.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://alvaroso.dev/" />
+    <meta property="twitter:title" content="Alvaroso | Mi portafolio" />
+    <meta property="twitter:description" content="Portfolio de Álvaro, desarrollador web y especialista en ciberseguridad." />
+    <meta property="twitter:image" content="https://alvaroso.dev/portfolio_preview.png" />
+    
     <title>Alvaroso | Mi portafolio</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BX8DLL9EJ"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("consent", "default", {
+        "analytics_storage": "denied"
+      });
+      gtag("config", "G-2BX8DLL9EJ");
+      
+      // Check if consent was previously given
+      const cookieConsent = localStorage.getItem('cookie-consent');
+      if (cookieConsent === 'accepted') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+    </script>
   </head>
+
   <body class="bg-dark-bg">
     <div class="background w-full h-full fixed top-0 left-0"></div>
     <slot />
+    <CookieConsent />
   </body>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      font-family: "Inter", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .background {
+      z-index: -1;
+      background-image: url("/background.png");
+    }
+  </style>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    font-family: "Inter", sans-serif;
-    scroll-behavior: smooth;
-  }
-
-  .background {
-    z-index: -1;
-    background-image: url("/background.png");
-  }
-</style>
