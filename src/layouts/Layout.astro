@@ -1,5 +1,5 @@
 ---
-import CookieConsent from "../components/CookieConsent.astro";
+
 ---
 
 <!doctype html>
@@ -63,25 +63,13 @@ import CookieConsent from "../components/CookieConsent.astro";
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("consent", "default", {
-        analytics_storage: "denied",
-      });
       gtag("config", "G-2BX8DLL9EJ");
-
-      // Check if consent was previously given
-      const cookieConsent = localStorage.getItem("cookie-consent");
-      if (cookieConsent === "accepted") {
-        gtag("consent", "update", {
-          analytics_storage: "granted",
-        });
-      }
     </script>
   </head>
 
   <body class="bg-dark-bg">
     <div class="background w-full h-full fixed top-0 left-0"></div>
     <slot />
-    <CookieConsent />
   </body>
 
   <style>
