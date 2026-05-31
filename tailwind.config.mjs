@@ -4,11 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#008CFF',
-        'dark-bg': '#0C0D17',
-        'light-bg': '#FFFFFF',
-        'dark-text': '#FFFFFF',
-        'light-text': '#000000',
+        'ink':     '#131313',
+        'canvas':  '#FEF9FF',
+        'blue':    '#48ACF0',
+        'yellow':  '#FFDB4D',
+        'green':   '#23CE6B',
+        'red':     '#E63841',
+      },
+      fontFamily: {
+        'sans': ['"Inter"', 'sans-serif'],
       },
     },
   },

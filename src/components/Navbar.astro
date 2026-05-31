@@ -1,7 +1,64 @@
-<nav class="h-9 py-8 flex justify-center items-center" id="home">
-  <a href="#home" class="p-4 text-primary">Inicio</a>
-  <a href="#about" class="p-4 text-primary">Sobre mí</a>
-  <a href="#projects" class="p-4 text-primary">Proyectos</a>
-  <a href="#conferences" class="p-4 text-primary">Conferencias</a>
-  <a href="#contact" class="p-4 text-primary">Contacto</a>
-</nav>
+---
+const links = [
+  { label: "Projects",   href: "#projects"   },
+  { label: "My journey", href: "#my-journey" },
+  { label: "Talks",      href: "#talks"      },
+];
+---
+
+<header class="fixed top-0 left-0 w-full z-50">
+  <!-- Yellow strip -->
+  <div class="absolute top-0 left-0 w-full flex justify-center pointer-events-none overflow-hidden">
+    <svg
+      id="navbar-yellow"
+      width="1139"
+      height="136"
+      viewBox="0 0 1139 136"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-full max-w-[1139px]"
+    >
+      <path
+        d="M26.3455 -39C172.304 56.8372 595.245 191.009 1119.35 -39"
+        stroke="#FFDB4D"
+        stroke-width="96"
+      />
+    </svg>
+  </div>
+
+  <!-- Nav content -->
+  <nav class="relative flex px-8 h-[136px]">
+    <!-- Logo: top-left -->
+    <a href="/" aria-label="Home" class="pt-6 self-start">
+      <svg
+        id="logo"
+        width="40"
+        height="37"
+        viewBox="0 0 67 62"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5.33929 21.453C24.8393 -1.54706 62.4194 3.72279 55.8394 31.4529C49.2593 59.1831 14.7325 59.987 14.7325 41.4983C14.7325 24.5437 53.0497 24.6244 59.3393 58.453"
+          stroke="#131313"
+          stroke-width="14"
+          stroke-linecap="round"
+        />
+      </svg>
+    </a>
+
+    <!-- Links: centered horizontally, sitting within the arch -->
+    <ul class="absolute left-1/2 -translate-x-1/2 flex gap-8 list-none m-0 p-0" style="top: 77px;">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-ink text-sm font-medium hover:opacity-60 transition-opacity duration-200"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

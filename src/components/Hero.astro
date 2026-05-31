@@ -1,78 +1,64 @@
-<div
-  class="w-11/12 z-10 flex flex-col sm:flex-row gap-4 m-auto mt-28 max-w-4xl"
+---
+import { ArrowUpRight, ChevronDown } from "@lucide/astro";
+---
+
+<section
+  class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 -mt-[55px]"
 >
-  <div class="w-full sm:w-1/2 flex flex-col">
-    <h1 class="text-4xl text-dark-text font-bold">
-      ¡Hola! Me llamo Álvaro, y soy
-      <span class="text-light-text bg-primary font-extrabold">
-        Desarrollador Web
-      </span>
-    </h1>
-    <p class="text-lg text-dark-text mt-10">
-      Desde 2022, exploro el desarrollo web y la ciberseguridad. Conoce mis
-      proyectos, mi experiencia y conferencias, si quieres charlar, no dudes en
-      contactarme. 😎
-    </p>
-    <div class="flex gap-6 mt-auto items-center justify-start">
-      <a href="https://github.com/aka-alvaroso" target="_blank" class="w-8">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 496 512"
-          class="text-primary fill-current"
-          ><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-          <path
-            d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-          ></path>
-        </svg>
-      </a>
-      <a
-        href="https://www.linkedin.com/in/
-álvaro-barbero-roldán-9474a9250"
-        target="_blank"
-        class="w-8"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512"
-          class="text-primary fill-current"
-        >
-          <path
-            d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-          ></path>
-        </svg>
-      </a>
-      <button
-        class="bg-primary flex items-center gap-2 py-2 px-4 rounded-full font-bold"
-        onclick="window.open('Curriculum Vitae - Alvaro Barbero.pdf', '_blank')"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-hard-drive-download-icon lucide-hard-drive-download"
-          ><path d="M12 2v8"></path><path d="m16 6-4 4-4-4"></path><rect
-            width="20"
-            height="8"
-            x="2"
-            y="14"
-            rx="2"></rect><path d="M6 18h.01"></path><path d="M10 18h.01"
-          ></path></svg
-        >
-        <span>Descargar CV</span>
-      </button>
-    </div>
+  <!-- Title -->
+  <h1
+    class="font-black italic text-[96px] leading-[1] text-ink max-w-5xl tracking-tight"
+  >
+    Software that ships.<br />
+    Products that last.
+  </h1>
+
+  <!-- CTAs -->
+  <div class="flex items-center gap-6 mt-10">
+    <a
+      href="mailto:hi@alvaroso.dev"
+      class="bg-blue text-white font-semibold text-sm px-6 py-3 rounded-full flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
+    >
+      Let's work
+      <ArrowUpRight size={16} stroke-width={2.5} />
+    </a>
+
+    <a
+      href="#projects"
+      class="text-ink font-medium text-sm flex items-center gap-2 hover:opacity-60 transition-opacity duration-200"
+    >
+      See my work
+      <ChevronDown size={18} stroke-width={2} />
+    </a>
   </div>
-  <div class="w-full sm:w-1/2 flex flex-col justify-center items-center">
-    <img
-      src="/my-image.jpg"
-      alt="my-image"
-      class="rounded-3xl rounded-es-[200px] border-2 border-solid border-primary"
-    />
-  </div>
-</div>
+
+  <!-- Strip: red -->
+  <svg
+    id="hero-red"
+    viewBox="0 0 1512 627"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="absolute left-0 w-full pointer-events-none"
+    style="bottom: calc(-45vh - 75px);"
+  >
+    <path
+      d="M-44.25 100.623C-14.0229 65.4528 63.201 6.71863 130.28 53.1433C214.129 111.174 171.894 236.235 293.631 229.098C415.367 221.96 637.102 -173.642 782.75 387.364C828.75 564.546 1085.25 401.338 1552.25 593.494"
+      stroke="#E63841"
+      stroke-width="72"></path>
+  </svg>
+
+  <!-- Strip: green -->
+  <svg
+    id="hero-green"
+    viewBox="0 0 1512 696"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="absolute left-0 w-full pointer-events-none"
+    style="bottom: calc(-50vh - 75px);"
+  >
+    <path
+      d="M1618 68.4105C1462.88 -18.0617 1133.01 27.0027 1042.62 452.108C982.878 733.108 281 751.608 -170 403.108"
+      stroke="#23CE6B"
+      stroke-width="64"></path>
+  </svg>
+</section>

@@ -1,141 +1,115 @@
-<section
-  id="conferences"
-  class="w-11/12 max-w-2xl m-auto flex flex-col items-center justify-center mt-24 pt-10"
->
-  <h2 class="relative text-white text-4xl font-bold mb-20">
-    Mis conferencias
-    <span
-      class="section-title text-primary text-4xl font-bold absolute -bottom-5 -right-4"
-    >
-      conferencias
-    </span>
+---
+
+---
+
+<section id="talks" class="relative pt-24 pb-32">
+  <!-- Title -->
+  <h2
+    class="relative z-30 text-center font-black italic text-[48px] leading-none text-ink mb-20"
+  >
+    Talks
   </h2>
 
-  <!-- Conference 1 -->
-  <div class="flex items-start gap-8 justify-center mb-12">
-    <div class="flex flex-col items-center justify-center">
-      <div
-        class="w-[35px] h-[35px] bg-transparent border-2 border-solid border-primary rounded-full"
-      >
-      </div>
-      <div class="w-[1px] h-[200px] bg-primary my-5"></div>
+  <!-- Blue S-curve strip -->
+  <div
+    class="absolute pointer-events-none z-20"
+    style="top: 120px; left: calc(-15% + 0px); width: 110%; height: 1700px;"
+  >
+    <svg
+      class="w-full h-full"
+      viewBox="0 0 1178 1655"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <path
+        d="M730 5.58105C611.333 52.4144 380.8 182.581 450 328.581C536.5 511.081 974.5 120.081 1142 523.581C1340 964.581 483 564.081 423 902.581C386.26 1109.86 596.763 1131.59 825.5 1156.08C1278.5 1204.58 883.5 1681.58 -328.5 1647.08"
+        stroke="#48ACF0"
+        stroke-width="12"></path>
+    </svg>
+  </div>
+
+  <!-- Talk entries -->
+  <div class="relative z-10 max-w-lg mx-auto px-8 flex flex-col gap-48">
+    <!-- C1b3rWall 2024 -->
+    <div>
+      <h3 class="font-black italic text-[32px] leading-tight text-ink">
+        C1b3rWall 2024
+      </h3>
+      <p class="font-black text-[16px] text-ink mt-1">Jun 2024</p>
+      <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
+        Speaker at Spain's National Police School about Flipper Zero and Web
+        Security.
+      </p>
+      <p class="text-ink text-[16px] font-bold mt-4">
+        Ávila, Spain · ~150 attendees
+      </p>
     </div>
 
-    <div class="flex flex-col items-start justify-center">
-      <div class="flex justify-center items-center gap-2">
-        <span class="text-2xl text-black font-bold bg-primary">1.</span>
-        <h3 class="text-white text-2xl font-bold">C1b3rWall 2024</h3>
-        <p class="text-white text-md opacity-50">20/06/2024</p>
-      </div>
+    <!-- Security High School 2k24 -->
+    <div>
+      <h3 class="font-black italic text-[32px] leading-tight text-ink">
+        Security High School 2k24
+      </h3>
+      <p class="font-black text-[16px] text-ink mt-1">Feb 2024</p>
+      <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
+        Workshop on Fake News and keynote on cybersecurity in front of 700
+        people.
+      </p>
+      <p class="text-ink text-[16px] font-bold mt-4">
+        Córdoba, Spain · ~700 attendees
+      </p>
+    </div>
 
-      <div class="flex flex-col items-start justify-center">
-        <h4 class="text-primary text-lg font-bold mt-4">Descripción</h4>
-        <p class="text-white text-md">
-          El día 20 de Junio de 2024, tuve la oportunidad de dar una ponencia en
-          C1b3rWall, en la Escuela Nacional de Policía de España. Estuve
-          compartiendo conocimientos de ciberseguridad con dispositivos como el
-          Flipper Zero.
-        </p>
-        <h4 class="text-primary text-lg font-bold mt-4">Lugar</h4>
-        <p class="text-white text-md">Ávila, España</p>
-      </div>
+    <!-- CiberSotero 2024 -->
+    <div>
+      <h3 class="font-black italic text-[32px] leading-tight text-ink">
+        CiberSotero 2024
+      </h3>
+      <p class="font-black text-[16px] text-ink mt-1">Jan 2024</p>
+      <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
+        Workshop on Fake Profiles and Web Security for Sotero Hernández's
+        students.
+      </p>
+      <p class="text-ink text-[16px] font-bold mt-4">
+        Sevilla, Spain · ~30 attendees
+      </p>
+    </div>
+
+    <!-- CascamorrasCON 2023 -->
+    <div>
+      <h3 class="font-black italic text-[32px] leading-tight text-ink">
+        CascamorrasCON 2023
+      </h3>
+      <p class="font-black text-[16px] text-ink mt-1">Oct 2023</p>
+      <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
+        Speaker on Mobile Security. My first experience on stage.
+      </p>
+      <p class="text-ink text-[16px] font-bold mt-4">
+        Granada, Spain · ~100 attendees
+      </p>
     </div>
   </div>
 
-  <!-- Conference 2 -->
-  <div class="flex items-start gap-8 justify-center mb-12">
-    <div class="flex flex-col items-center justify-center">
-      <div
-        class="w-[35px] h-[35px] bg-transparent border-2 border-solid border-primary rounded-full"
+  <!-- Yellow dashed circle (hover easter egg — interaction added in animation phase) -->
+  <div class="absolute pointer-events-none" style="top: 8%; right: 36%;">
+    <div class="relative">
+      <svg
+        width="153"
+        height="147"
+        viewBox="0 0 153 147"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-      </div>
-      <div class="w-[1px] h-[200px] bg-primary my-5"></div>
-    </div>
-
-    <div class="flex flex-col items-start justify-center">
-      <div class="flex justify-center items-center gap-2">
-        <span class="text-2xl text-black font-bold bg-primary">2.</span>
-        <h3 class="text-white text-2xl font-bold">Security High School 2k24</h3>
-        <p class="text-white text-md opacity-50">19/02/2024</p>
-      </div>
-
-      <div class="flex flex-col items-start justify-center">
-        <h4 class="text-primary text-lg font-bold mt-4">Descripción</h4>
-        <p class="text-white text-md">
-          En febrero de 2024, tuve la oportunidad en las IX Jornadas de Security
-          High School de dar un Taller sobre Fake News y Suplantación de
-          Identidad además de una ponencia frente a 700 personas sobre el
-          Flipper Zero y sus posibilidades.
-        </p>
-        <h4 class="text-primary text-lg font-bold mt-4">Lugar</h4>
-        <p class="text-white text-md">Córdoba, España</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Conference 3 -->
-  <div class="flex items-start gap-8 justify-center mb-12">
-    <div class="flex flex-col items-center justify-center">
-      <div
-        class="w-[35px] h-[35px] bg-transparent border-2 border-solid border-primary rounded-full"
+        <path
+          d="M61.6088 0.707596C59.9661 0.923731 58.8096 2.43061 59.0258 4.07331C59.2419 5.716 60.7488 6.87246 62.3915 6.65633L62.0001 3.68196L61.6088 0.707596ZM1.07621 120.886C-0.195075 121.948 -0.364285 123.84 0.698265 125.111L18.0135 145.828C19.0761 147.099 20.968 147.269 22.2393 146.206C23.5106 145.143 23.6798 143.251 22.6172 141.98L7.2259 123.565L25.6408 108.174C26.912 107.111 27.0812 105.22 26.0187 103.948C24.9561 102.677 23.0642 102.508 21.7929 103.57L1.07621 120.886ZM11.1669 126.856C12.8195 126.974 14.2552 125.73 14.3737 124.078C14.4921 122.425 13.2484 120.989 11.5957 120.871L11.3813 123.863L11.1669 126.856ZM27.8153 121.726C26.1594 121.672 24.773 122.97 24.7188 124.626C24.6647 126.282 25.9632 127.669 27.6192 127.723L27.7172 124.724L27.8153 121.726ZM44.1238 127.892C45.7805 127.87 47.1053 126.508 47.0828 124.852C47.0602 123.195 45.699 121.87 44.0423 121.893L44.083 124.892L44.1238 127.892ZM60.262 121.229C58.6092 121.346 57.3635 122.78 57.4796 124.432C57.5957 126.085 59.0297 127.331 60.6825 127.215L60.4722 124.222L60.262 121.229ZM77.236 125.483C78.8763 125.25 80.0172 123.731 79.7841 122.091C79.5511 120.45 78.0323 119.31 76.392 119.543L76.814 122.513L77.236 125.483ZM92.2392 116.579C90.6271 116.961 89.6303 118.578 90.0129 120.19C90.3954 121.802 92.0124 122.799 93.6245 122.417L92.9318 119.498L92.2392 116.579ZM109.561 117.639C111.114 117.062 111.905 115.335 111.328 113.782C110.751 112.229 109.024 111.438 107.471 112.015L108.516 114.827L109.561 117.639ZM121.903 105.255C120.475 106.094 119.997 107.932 120.837 109.361C121.676 110.789 123.515 111.267 124.943 110.428L123.423 107.841L121.903 105.255ZM138.557 100.076C139.73 98.9059 139.733 97.0064 138.564 95.833C137.394 94.6595 135.494 94.6564 134.321 95.8261L136.439 97.9509L138.557 100.076ZM143.194 83.436C142.488 84.9347 143.13 86.7223 144.629 87.4287C146.128 88.1351 147.915 87.4928 148.622 85.9941L145.908 84.7151L143.194 83.436ZM152.833 69.0221C152.91 67.3671 151.631 65.9628 149.976 65.8857C148.32 65.8085 146.916 67.0876 146.839 68.7427L149.836 68.8824L152.833 69.0221ZM144.793 53.5947C145.286 55.1765 146.968 56.0592 148.55 55.5662C150.131 55.0732 151.014 53.3913 150.521 51.8095L147.657 52.7021L144.793 53.5947ZM143.112 36.3125C142.204 34.9266 140.344 34.5392 138.958 35.4472C137.573 36.3552 137.185 38.2147 138.093 39.6006L140.602 37.9566L143.112 36.3125ZM128.004 27.5767C129.204 28.7188 131.103 28.6717 132.245 27.4714C133.388 26.2711 133.34 24.3721 132.14 23.23L130.072 25.4034L128.004 27.5767ZM118.665 12.8529C117.256 11.9809 115.407 12.4161 114.535 13.8249C113.663 15.2337 114.098 17.0827 115.507 17.9547L117.086 15.4038L118.665 12.8529ZM101.329 11.0163C102.881 11.5946 104.609 10.8048 105.187 9.25219C105.766 7.69955 104.976 5.97205 103.423 5.39369L102.376 8.20498L101.329 11.0163ZM87.0173 1.05807C85.3817 0.793835 83.8415 1.90559 83.5773 3.54124C83.3131 5.17688 84.4248 6.71704 86.0605 6.98128L86.5389 4.01967L87.0173 1.05807ZM70.2886 5.99817C71.9444 5.94001 73.2396 4.55054 73.1814 2.89471C73.1232 1.23888 71.7338 -0.0562904 70.0779 0.00187278L70.1833 3.00002L70.2886 5.99817ZM3.00012 123.187L2.73288 126.175C5.59156 126.431 8.40273 126.658 11.1669 126.856L11.3813 123.863L11.5957 120.871C8.86754 120.676 6.09161 120.452 3.26737 120.199L3.00012 123.187ZM27.7172 124.724L27.6192 127.723C33.345 127.91 38.8446 127.964 44.1238 127.892L44.083 124.892L44.0423 121.893C38.8603 121.963 33.4534 121.91 27.8153 121.726L27.7172 124.724ZM60.4722 124.222L60.6825 127.215C66.5097 126.805 72.0241 126.223 77.236 125.483L76.814 122.513L76.392 119.543C71.3299 120.262 65.9571 120.829 60.262 121.229L60.4722 124.222ZM92.9318 119.498L93.6245 122.417C99.3939 121.047 104.7 119.446 109.561 117.639L108.516 114.827L107.471 112.015C102.86 113.729 97.7911 115.261 92.2392 116.579L92.9318 119.498ZM123.423 107.841L124.943 110.428C130.275 107.295 134.8 103.821 138.557 100.076L136.439 97.9509L134.321 95.8261C130.957 99.1795 126.844 102.352 121.903 105.255L123.423 107.841ZM145.908 84.7151L148.622 85.9941C151.205 80.5135 152.564 74.791 152.833 69.0221L149.836 68.8824L146.839 68.7427C146.606 73.7455 145.431 78.6911 143.194 83.436L145.908 84.7151ZM147.657 52.7021L150.521 51.8095C148.851 46.4506 146.337 41.2355 143.112 36.3125L140.602 37.9566L138.093 39.6006C141.039 44.0975 143.302 48.8105 144.793 53.5947L147.657 52.7021ZM130.072 25.4034L132.14 23.23C128.114 19.3987 123.594 15.9038 118.665 12.8529L117.086 15.4038L115.507 17.9547C120.09 20.791 124.281 24.0338 128.004 27.5767L130.072 25.4034ZM102.376 8.20498L103.423 5.39369C98.2178 3.45469 92.7275 1.98052 87.0173 1.05807L86.5389 4.01967L86.0605 6.98128C91.3747 7.83977 96.4843 9.21172 101.329 11.0163L102.376 8.20498ZM70.1833 3.00002L70.0779 0.00187278C67.2851 0.0999753 64.4599 0.332466 61.6088 0.707596L62.0001 3.68196L62.3915 6.65633C65.0521 6.30626 67.6863 6.08958 70.2886 5.99817L70.1833 3.00002Z"
+          fill="#FFDB4D"></path>
+      </svg>
+      <span
+        class="absolute text-[#FFDB4D] font-bold text-[16px] text-center leading-tight whitespace-nowrap"
+        style="top: -10px; right: 30px; transform: rotate(35deg); transform-origin: left center;"
+        >Hover to see!</span
       >
-      </div>
-      <div class="w-[1px] h-[150px] bg-primary my-5"></div>
-    </div>
-
-    <div class="flex flex-col items-start justify-center">
-      <div class="flex justify-center items-center gap-2">
-        <span class="text-2xl text-black font-bold bg-primary">3.</span>
-        <h3 class="text-white text-2xl font-bold">CiberSotero</h3>
-        <p class="text-white text-md opacity-50">19/01/2024</p>
-      </div>
-
-      <div class="flex flex-col items-start justify-center">
-        <h4 class="text-primary text-lg font-bold mt-4">Descripción</h4>
-        <p class="text-white text-md">
-          El 19 de Enero de 2024, tuve la oportunidad de dar un taller en las
-          jornadas de CiberSotero sobre ciberseguridad, noticias falsas y
-          suplantación de identidad.
-        </p>
-        <h4 class="text-primary text-lg font-bold mt-4">Lugar</h4>
-        <p class="text-white text-md">Sevilla, España</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Conference 4 -->
-  <div class="flex items-start gap-8 justify-center">
-    <div class="flex flex-col items-center justify-center">
-      <div
-        class="w-[35px] h-[35px] bg-transparent border-2 border-solid border-primary rounded-full"
-      >
-      </div>
-      <div class="w-[1px] h-[150px] bg-primary my-5"></div>
-    </div>
-
-    <div class="flex flex-col items-start justify-center">
-      <div class="flex justify-center items-center gap-2">
-        <span class="text-2xl text-black font-bold bg-primary">4.</span>
-        <h3 class="text-white text-2xl font-bold">CascamorrasCON</h3>
-        <p class="text-white text-md opacity-50">20/10/2023</p>
-      </div>
-
-      <div class="flex flex-col items-start justify-center">
-        <h4 class="text-primary text-lg font-bold mt-4">Descripción</h4>
-        <p class="text-white text-md">
-          El día 20 de Octubre de 2023, tuve la oportunidad de dar una ponencia
-          en las jornadas de CascamorrasCON sobre aplicaciones de rastreo móvil
-          y seguridad móvil.
-        </p>
-        <h4 class="text-primary text-lg font-bold mt-4">Lugar</h4>
-        <p class="text-white text-md">Baza, España</p>
-      </div>
     </div>
   </div>
 </section>
-
-<style>
-  span.section-title {
-    font-family: "Redacted Script", cursive;
-  }
-</style>
