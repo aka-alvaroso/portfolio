@@ -7,14 +7,14 @@ import { ArrowUpRight, ChevronDown } from "@lucide/astro";
 >
   <!-- Title -->
   <h1
-    class="font-black italic text-[96px] leading-[1] text-ink max-w-5xl tracking-tight"
+    class="font-black italic leading-[1] text-ink max-w-5xl tracking-tight text-[clamp(2.5rem,8vw,6rem)]"
   >
     Software that ships.<br />
     Products that last.
   </h1>
 
   <!-- CTAs -->
-  <div class="flex items-center gap-6 mt-10">
+  <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-8 md:mt-10">
     <a
       href="mailto:hi@alvaroso.dev"
       class="bg-blue text-white font-semibold text-sm px-6 py-3 rounded-full flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
@@ -32,33 +32,27 @@ import { ArrowUpRight, ChevronDown } from "@lucide/astro";
     </a>
   </div>
 
-  <!-- Strip: red -->
-  <svg
-    id="hero-red"
-    viewBox="0 0 1512 627"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="absolute left-0 w-full pointer-events-none"
-    style="bottom: calc(-45vh - 75px);"
-  >
-    <path
-      d="M-44.25 100.623C-14.0229 65.4528 63.201 6.71863 130.28 53.1433C214.129 111.174 171.894 236.235 293.631 229.098C415.367 221.96 637.102 -173.642 782.75 387.364C828.75 564.546 1085.25 401.338 1552.25 593.494"
-      stroke="#E63841"
-      stroke-width="72"></path>
+  <!-- Strip: red — mobile -->
+  <svg viewBox="0 0 402 605" fill="none" xmlns="http://www.w3.org/2000/svg"
+    class="sm:hidden absolute left-0 w-full pointer-events-none" style="bottom: -25vh; max-width: 360px;">
+    <path d="M476 568.942C306.934 560.997 207.692 560.562 178.276 435.487C115.547 168.768 41.3697 60.9361 -35 33.9421" stroke="#E63841" stroke-width="72"/>
+  </svg>
+  <!-- Strip: green — mobile -->
+  <svg viewBox="0 0 402 613" fill="none" xmlns="http://www.w3.org/2000/svg"
+    class="sm:hidden absolute right-0 w-full pointer-events-none" style="bottom: calc(-28vh - 150px); max-width: 360px;">
+    <path d="M-19.5 582.611C75.3287 547.204 140.208 489.818 156.622 412.619C201.816 200.056 306.888 82.5126 420.051 28.9207" stroke="#23CE6B" stroke-width="64"/>
   </svg>
 
-  <!-- Strip: green -->
-  <svg
-    id="hero-green"
-    viewBox="0 0 1512 696"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    class="absolute left-0 w-full pointer-events-none"
-    style="bottom: calc(-50vh - 75px);"
-  >
-    <path
-      d="M1618 68.4105C1462.88 -18.0617 1133.01 27.0027 1042.62 452.108C982.878 733.108 281 751.608 -170 403.108"
-      stroke="#23CE6B"
-      stroke-width="64"></path>
+  <!-- Strip: red — desktop -->
+  <svg viewBox="0 0 1512 627" fill="none" xmlns="http://www.w3.org/2000/svg"
+    class="hidden sm:block absolute left-0 w-full pointer-events-none"
+    style="bottom: calc(-45vh - 75px);">
+    <path d="M-44.25 100.623C-14.0229 65.4528 63.201 6.71863 130.28 53.1433C214.129 111.174 171.894 236.235 293.631 229.098C415.367 221.96 637.102 -173.642 782.75 387.364C828.75 564.546 1085.25 401.338 1552.25 593.494" stroke="#E63841" stroke-width="72"/>
+  </svg>
+  <!-- Strip: green — desktop -->
+  <svg viewBox="0 0 1512 696" fill="none" xmlns="http://www.w3.org/2000/svg"
+    class="hidden sm:block absolute left-0 w-full pointer-events-none"
+    style="bottom: calc(-50vh - 75px);">
+    <path d="M1618 68.4105C1462.88 -18.0617 1133.01 27.0027 1042.62 452.108C982.878 733.108 281 751.608 -170 403.108" stroke="#23CE6B" stroke-width="64"/>
   </svg>
 </section>

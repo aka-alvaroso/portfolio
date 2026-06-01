@@ -1,82 +1,99 @@
 ---
 ---
 
-<section id="my-journey" class="relative pt-24 pb-32">
+<section id="my-journey" class="relative pt-16 md:pt-24 pb-16 md:pb-32">
 
   <!-- Title -->
-  <h2 class="relative z-10 text-center font-black italic text-[48px] leading-none text-ink mb-16">My journey</h2>
+  <h2 class="relative z-10 text-center font-black italic text-[clamp(2rem,5vw,3rem)] leading-none text-ink mb-10 md:mb-16">My journey</h2>
 
-  <!-- Column labels -->
-  <div class="relative z-10 max-w-7xl mx-auto px-12 grid gap-64 mb-4" style="grid-template-columns: 1fr 1fr;">
+  <!-- Column labels (hidden on mobile — shown inline with content) -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 hidden md:grid mb-4" style="grid-template-columns: 1fr 1fr; gap: clamp(2rem, 10vw, 16rem);">
     <span class="text-[#48ACF0] font-black text-[24px] text-center">Work<br/>Experience</span>
     <span class="text-[#FFDB4D] font-black text-[24px] text-left">Studies</span>
   </div>
 
-  <!-- Now line (full viewport width) -->
-  <div class="relative z-10 mb-12" style="width: 100vw; margin-left: calc(50% - 50vw);">
-
+  <!-- Now line (full viewport width) — mobile -->
+  <div class="md:hidden relative z-10 mb-8" style="width: 100vw; margin-left: calc(50% - 50vw);">
+    <img src="/2026/strips/my-journey-green-mobile.svg" alt="" class="w-full" style="height: 40px;" />
+    <span class="absolute left-1/2 -translate-x-1/2 -top-6 text-[#23CE6B] font-black text-[1rem]">Now</span>
+  </div>
+  <!-- Now line (full viewport width) — desktop -->
+  <div class="hidden md:block relative z-10 mb-12" style="width: 100vw; margin-left: calc(50% - 50vw);">
     <svg class="w-full" viewBox="0 0 1472 104" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height: 104px;">
       <path d="M0 95.499C20 95.499 290 99.0533 397 71.1245C495.333 45.4578 775 -2.67548 1107 10.1245C1251 15.6763 1410.5 90.499 1472 90.499" stroke="#23CE6B" stroke-opacity="0.25" stroke-width="16" stroke-dasharray="32 32"/>
     </svg>
-    <span class="absolute left-1/2 -translate-x-1/2 -top-7 text-[#23CE6B] font-black text-[24px]">Now</span>
+    <span class="absolute left-1/2 -translate-x-1/2 -top-7 text-[#23CE6B] font-black text-[clamp(1rem,2.5vw,1.5rem)]">Now</span>
   </div>
 
-  <!-- Two-column timeline content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-12 grid gap-64" style="grid-template-columns: 1fr 1fr;">
+  <!-- Timeline content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
 
-    <!-- Left: Work Experience -->
-    <div class="flex flex-col gap-14">
-
-      <!-- AllPentesting -->
+    <!-- Mobile: single column -->
+    <div class="flex flex-col gap-10 md:hidden">
+      <p class="text-ink underline font-black text-[20px]">Work Experience</p>
       <div>
-        <h3 class="font-black italic text-[32px] leading-tight text-ink">AllPentesting</h3>
-        <p class="font-black text-[16px] text-ink mt-1">Jun. 2023 – May. 2026</p>
-        <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-          Web Developer at AllPentesting since 2023, evolving from building client websites to taking full ownership of an internal cybersecurity project from zero to deployment.
-        </p>
+        <h3 class="font-black italic text-[24px] leading-tight text-ink">AllPentesting</h3>
+        <p class="font-black text-[14px] text-ink mt-1">Jun. 2023 – May. 2026</p>
+        <p class="text-ink text-[16px] font-normal mt-2 leading-relaxed">Web Developer at AllPentesting since 2023, evolving from building client websites to taking full ownership of an internal cybersecurity project from zero to deployment.</p>
+      </div>
+      <div>
+        <h3 class="font-black italic text-[24px] leading-tight text-ink">University of Žilina</h3>
+        <p class="font-black text-[14px] text-ink mt-1">Mar. 2025 – Jun. 2025</p>
+        <p class="text-ink text-[16px] font-normal mt-2 leading-relaxed">Web Developer Intern at the University of Žilina, part of an Erasmus+ project. Developing the university's lab websites.</p>
       </div>
 
-      <!-- University of Žilina -->
+      <p class="text-ink underline font-black text-[20px] mt-4">Studies</p>
       <div>
-        <h3 class="font-black italic text-[32px] leading-tight text-ink">University of Žilina</h3>
-        <p class="font-black text-[16px] text-ink mt-1">Mar. 2025 – Jun. 2025</p>
-        <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-          Web Developer Intern at the University of Žilina, part of an Erasmus+ project. Developing the university's lab websites.
-        </p>
+        <h3 class="font-black italic text-[24px] leading-tight text-ink">IT Cybersecurity Specialization</h3>
+        <p class="font-black text-[14px] text-ink mt-1">Sep. 2025 – May. 2026</p>
+        <p class="text-ink text-[16px] font-normal mt-2 leading-relaxed">Learning advanced ethical hacking, forensics and cybersecurity at IES Trassierra.</p>
       </div>
-
+      <div>
+        <h3 class="font-black italic text-[24px] leading-tight text-ink">Higher Vocational Training DAW</h3>
+        <p class="font-black text-[14px] text-ink mt-1">Sep. 2023 – May. 2025</p>
+        <p class="text-ink text-[16px] font-normal mt-2 leading-relaxed">Learning Web Application Development at IES Fidiana, working with JavaScript, React, databases and web design.</p>
+      </div>
+      <div>
+        <h3 class="font-black italic text-[24px] leading-tight text-ink">Intermediate Vocational Training</h3>
+        <p class="font-black text-[14px] text-ink mt-1">Sep. 2021 – May. 2023</p>
+        <p class="text-ink text-[16px] font-normal mt-2 leading-relaxed">Studying Microcomputer Systems and Networks (SMR) at IES Fidiana.</p>
+      </div>
     </div>
 
-    <!-- Right: Studies -->
-    <div class="flex flex-col gap-14">
-
-      <!-- IT Cybersecurity Specialization -->
-      <div>
-        <h3 class="font-black italic text-[32px] leading-tight text-ink">IT Cybersecurity Specialization</h3>
-        <p class="font-black text-[16px] text-ink mt-1">Sep. 2025 – May. 2026</p>
-        <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-          Learning advanced ethical hacking, forensics and cybersecurity at IES Trassierra.
-        </p>
+    <!-- Desktop: two columns -->
+    <div class="hidden md:grid gap-64" style="grid-template-columns: 1fr 1fr;">
+      <!-- Left: Work Experience -->
+      <div class="flex flex-col gap-14">
+        <div>
+          <h3 class="font-black italic text-[clamp(1.25rem,2.5vw,2rem)] leading-tight text-ink">AllPentesting</h3>
+          <p class="font-black text-[16px] text-ink mt-1">Jun. 2023 – May. 2026</p>
+          <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">Web Developer at AllPentesting since 2023, evolving from building client websites to taking full ownership of an internal cybersecurity project from zero to deployment.</p>
+        </div>
+        <div>
+          <h3 class="font-black italic text-[clamp(1.25rem,2.5vw,2rem)] leading-tight text-ink">University of Žilina</h3>
+          <p class="font-black text-[16px] text-ink mt-1">Mar. 2025 – Jun. 2025</p>
+          <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">Web Developer Intern at the University of Žilina, part of an Erasmus+ project. Developing the university's lab websites.</p>
+        </div>
       </div>
 
-      <!-- Higher Vocational Training DAW -->
-      <div>
-        <h3 class="font-black italic text-[32px] leading-tight text-ink">Higher Vocational Training DAW</h3>
-        <p class="font-black text-[16px] text-ink mt-1">Sep. 2023 – May. 2025</p>
-        <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-          Learning Web Application Development at IES Fidiana, working with JavaScript, React, databases and web design.
-        </p>
+      <!-- Right: Studies -->
+      <div class="flex flex-col gap-14">
+        <div>
+          <h3 class="font-black italic text-[clamp(1.25rem,2.5vw,2rem)] leading-tight text-ink">IT Cybersecurity Specialization</h3>
+          <p class="font-black text-[16px] text-ink mt-1">Sep. 2025 – May. 2026</p>
+          <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">Learning advanced ethical hacking, forensics and cybersecurity at IES Trassierra.</p>
+        </div>
+        <div>
+          <h3 class="font-black italic text-[clamp(1.25rem,2.5vw,2rem)] leading-tight text-ink">Higher Vocational Training DAW</h3>
+          <p class="font-black text-[16px] text-ink mt-1">Sep. 2023 – May. 2025</p>
+          <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">Learning Web Application Development at IES Fidiana, working with JavaScript, React, databases and web design.</p>
+        </div>
+        <div>
+          <h3 class="font-black italic text-[clamp(1.25rem,2.5vw,2rem)] leading-tight text-ink">Intermediate Vocational Training</h3>
+          <p class="font-black text-[16px] text-ink mt-1">Sep. 2021 – May. 2023</p>
+          <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">Studying Microcomputer Systems and Networks (SMR) at IES Fidiana.</p>
+        </div>
       </div>
-
-      <!-- Intermediate Vocational Training -->
-      <div>
-        <h3 class="font-black italic text-[32px] leading-tight text-ink">Intermediate Vocational Training</h3>
-        <p class="font-black text-[16px] text-ink mt-1">Sep. 2021 – May. 2023</p>
-        <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-          Studying Microcomputer Systems and Networks (SMR) at IES Fidiana.
-        </p>
-      </div>
-
     </div>
 
   </div>
