@@ -113,7 +113,7 @@ export const en = {
         name: "Moka.",
         description:
           "Visual creator for social media content. Gradient backgrounds, animations, video export and iPhone mockup support.",
-        href: "https://moka.so/",
+        href: "https://alvaroso.dev/moka/",
         tagline: "Beautiful content, built in seconds.",
         period: "May 2026 – Today",
         why: "I kept making content for social media and the exports always looked off. I wanted cool backgrounds, but also to animate things and export video, not just static images. Nothing did all of that, so I built it. Still in development, about to go live.",
