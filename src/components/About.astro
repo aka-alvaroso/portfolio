@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 
 <section id="about" class="relative pt-[calc(55vh+100px)] md:pt-[calc(55vh+100px)] pb-32">
   <!-- Strip: blue (left side) — mobile -->
-  <div class="sm:hidden absolute left-0 pointer-events-none z-10" style="top: calc(55vh + 100px); width: 100vw; max-width: 420px;">
+  <div class="sm:hidden absolute left-0 pointer-events-none z-10" style="top: calc(55vh + 200px); width: 100vw; max-width: 420px;">
     <svg viewBox="0 0 348 1681" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
       <path class="strip-about" d="M-27.5 30.7386C231.388 105.662 315.5 177.331 315.5 462.054C315.5 578.054 86 526.554 86 798.054C86 1024.01 201.38 1459.03 -24 1656.35" stroke="#48ACF0" stroke-width="64"/>
     </svg>
@@ -31,7 +31,7 @@ const t = useTranslations(lang);
   </div>
 
   <!-- Strip: yellow (right side) — mobile -->
-  <div class="sm:hidden absolute right-0 pointer-events-none z-10" style="top: calc(55vh + 100px); width: 100vw; max-width: 420px;">
+  <div class="sm:hidden absolute right-0 pointer-events-none z-10" style="top: calc(55vh + 200px); width: 100vw; max-width: 420px;">
     <svg viewBox="0 0 402 1628" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
       <path class="strip-about" d="M408.992 45.0154C202.668 36.67 -13.6574 -41.6864 29.565 314.331C100.416 897.923 353.344 569.262 353.344 851.186C353.344 1320.49 89.9094 1446.3 421 1598.01" stroke="#FFDB4D" stroke-width="64"/>
     </svg>
@@ -67,21 +67,40 @@ const t = useTranslations(lang);
 
   const section = document.getElementById('about');
 
-  document.querySelectorAll<SVGPathElement>('.strip-about').forEach((path) => {
-    const len = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+  const mm = gsap.matchMedia();
 
-    const trigger = path.closest('div') ?? section;
+  mm.add('(max-width: 639px)', () => {
+    document.querySelectorAll<SVGPathElement>('.strip-about').forEach((path) => {
+      const len = path.getTotalLength();
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 15%',
+          end: 'bottom 30%',
+          scrub: 6,
+        },
+      });
+    });
+  });
 
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger,
-        start: 'top 90%',
-        end: 'bottom 10%',
-        scrub: 3,
-      },
+  mm.add('(min-width: 640px)', () => {
+    document.querySelectorAll<SVGPathElement>('.strip-about').forEach((path) => {
+      const len = path.getTotalLength();
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      const trigger = path.closest('div') ?? section;
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger,
+          start: 'top 90%',
+          end: 'bottom 10%',
+          scrub: 3,
+        },
+      });
     });
   });
 </script>
