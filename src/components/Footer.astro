@@ -1,178 +1,147 @@
 ---
-import { ArrowUpRight, Pin, Share2 } from "@lucide/astro";
+import { ArrowUpRight, Pin, BadgeCheck } from "@lucide/astro";
+import type { Locale } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!-- Contact + Footer -->
 <section id="contact" class="relative pb-0 overflow-hidden">
-  <!-- "Let's work together" with green oval -->
+  <!-- "Let's work together" -->
   <div style="height: 180px;"></div>
   <div class="relative flex flex-col items-center justify-center z-10">
-    <!-- Green oval with circular text -->
-    <div class="relative flex items-center justify-center">
-      <svg
-        width="370"
-        height="172"
-        viewBox="0 0 394 183"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="absolute"
-        style="top: 35px;"
-      >
-        <path
-          id="oval-stroke"
-          d="M100.74 19.3921C-29.2599 -0.608147 -14.4832 200.698 205.24 158.892C420.741 117.889 397.74 47.3921 318.24 19.3921"
-          stroke="#23CE6B"
-          stroke-width="36"></path>
-        <path
-          id="oval-text-path"
-          d="M100.74 19.3921C-29.2599 -0.608147 -14.4832 200.698 205.24 158.892C420.741 117.889 397.74 47.3921 318.24 19.3921"
-          fill="none"
-          stroke="none"></path>
-        <text
-          font-family="Inter, sans-serif"
-          font-size="22"
-          font-weight="900"
-          fill="#131313"
-          letter-spacing="1"
-          dy="5"
-        >
-          <textPath href="#oval-text-path" startOffset="0%">
-            · Scale · Create · Imagine · Design · Build · Ship · Ca
-          </textPath>
-        </text>
-      </svg>
-
-      <!-- Title -->
-      <h2
-        class="relative font-black italic text-[clamp(2rem,5vw,3rem)] leading-tight text-ink text-center z-10"
-        style="padding: 16px 32px;"
-      >
-        Let's work<br />together
-      </h2>
-    </div>
+    <h2
+      class="relative font-black italic text-[clamp(2rem,5vw,3rem)] leading-tight text-ink text-center z-10"
+      style="padding: 16px 32px;"
+    >
+      {t.footer.title1}<br />{t.footer.title2}
+    </h2>
   </div>
 
   <!-- Yellow arch footer -->
   <div class="relative mt-16">
+    <!-- Yellow arch — mobile (CSS arch) -->
+    <div class="absolute inset-0 sm:hidden" style="background: #FFDB4D; border-radius: 50% 50% 0 0 / 12% 12% 0 0;"></div>
+    <!-- Yellow arch — tablet -->
+    <svg class="absolute inset-0 w-full h-full hidden sm:block xl:hidden" viewBox="0 0 834 508" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path class="strip-footer" d="M977 310.6C802.991 255.071 625.492 201.798 433.5 207.4C209.733 213.929 34.6251 234.205 -108 262.318" stroke="#FFDB4D" stroke-width="414"/>
+    </svg>
+    <!-- Yellow arch — desktop -->
     <svg
-      class="w-full"
+      class="absolute inset-0 w-full h-full hidden xl:block"
       viewBox="0 0 1512 727"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style="display: block;"
+      preserveAspectRatio="none"
     >
-      <path
+      <path class="strip-footer"
         d="M-652.5 678.902C-263 595.403 -158.5 340.971 752.5 314.39C1182.32 301.849 1539.5 584.383 1947.5 526.712"
         stroke="#FFDB4D"
-        stroke-width="460"></path>
+        stroke-width="628"></path>
     </svg>
 
-    <!-- Footer content overlaid on yellow -->
-    <div class="absolute inset-0 flex flex-col items-center pt-16 px-16">
+    <!-- Footer content — drives the real height -->
+    <div class="relative z-10 flex flex-col items-center pt-16 px-6 md:px-16 pb-12">
       <!-- Logo -->
-      <svg
-        width="48"
-        height="44"
-        viewBox="0 0 67 62"
-        style="margin-top: 100px;"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M5.33929 21.453C24.8393 -1.54706 62.4194 3.72279 55.8394 31.4529C49.2593 59.1831 14.7325 59.987 14.7325 41.4983C14.7325 24.5437 53.0497 24.6244 59.3393 58.453"
-          stroke="#131313"
-          stroke-width="14"
-          stroke-linecap="round"></path>
-      </svg>
+      <img src="/2026/logo.svg" alt="Logo" style="margin-top: 40px; width: 48px; height: auto;" />
 
       <!-- Three columns -->
-      <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-x-48 mt-8 md:mt-16">
+      <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-x-48 mt-6 md:mt-16">
         <!-- Navigate -->
         <div>
-          <p
-            class="font-black text-[24px] text-ink mb-4 flex items-center gap-2"
-          >
-            Navigate <Pin size={16} stroke-width={2.5} />
+          <p class="font-black text-[clamp(16px,2vw,24px)] text-ink mb-3 flex items-center gap-2">
+            {t.footer.navigate} <span style="display:inline-flex;transform:rotate(20deg);"><Pin size={32} stroke-width={3} /></span>
           </p>
-          <ul class="flex flex-col gap-2">
+          <ul class="flex flex-col gap-1">
             <li>
-              <a
-                href="#projects"
-                class="text-ink text-[24px] hover:opacity-60 transition-opacity"
-                >Projects</a
-              >
+              <a href="#projects" class="text-ink text-[clamp(14px,1.8vw,24px)] hover:opacity-60 transition-opacity">{t.footer.navLinks.projects}</a>
             </li>
             <li>
-              <a
-                href="#my-journey"
-                class="text-ink text-[24px] hover:opacity-60 transition-opacity"
-                >My journey</a
-              >
+              <a href="#my-journey" class="text-ink text-[clamp(14px,1.8vw,24px)] hover:opacity-60 transition-opacity">{t.footer.navLinks.journey}</a>
             </li>
             <li>
-              <a
-                href="#talks"
-                class="text-ink text-[24px] hover:opacity-60 transition-opacity"
-                >Talks</a
-              >
+              <a href="#talks" class="text-ink text-[clamp(14px,1.8vw,24px)] hover:opacity-60 transition-opacity">{t.footer.navLinks.talks}</a>
             </li>
           </ul>
         </div>
 
         <!-- Social media -->
         <div>
-          <p
-            class="font-black text-[24px] text-ink mb-4 flex items-center gap-2"
-          >
-            My social media <Share2 size={16} stroke-width={2.5} />
+          <p class="font-black text-[clamp(16px,2vw,24px)] text-ink mb-3 flex items-center gap-2">
+            {t.footer.social} <span style="display:inline-flex;transform:rotate(20deg);"><BadgeCheck size={32} stroke-width={3} /></span>
           </p>
-          <ul class="flex flex-col gap-2">
+          <ul class="flex flex-col gap-1">
             <li>
-              <a
-                href="https://go.alvaroso.dev/linkedin"
-                target="_blank"
-                class="text-ink text-[24px] hover:opacity-60 transition-opacity"
-                >go.alvaroso.dev/linkedin</a
-              >
+              <a href="https://go.alvaroso.dev/linkedin" target="_blank" class="text-ink text-[clamp(12px,1.5vw,24px)] hover:opacity-60 transition-opacity">go.alvaroso.dev/linkedin</a>
             </li>
             <li>
-              <a
-                href="https://go.alvaroso.dev/x"
-                target="_blank"
-                class="text-ink text-[24px] hover:opacity-60 transition-opacity"
-                >go.alvaroso.dev/x</a
-              >
+              <a href="https://go.alvaroso.dev/twitter" target="_blank" class="text-ink text-[clamp(12px,1.5vw,24px)] hover:opacity-60 transition-opacity">go.alvaroso.dev/twitter</a>
             </li>
             <li>
-              <a
-                href="https://go.alvaroso.dev/github"
-                target="_blank"
-                class="text-ink text-[24px] hover:opacity-60 transition-opacity"
-                >go.alvaroso.dev/github</a
-              >
+              <a href="https://go.alvaroso.dev/github" target="_blank" class="text-ink text-[clamp(12px,1.5vw,24px)] hover:opacity-60 transition-opacity">go.alvaroso.dev/github</a>
             </li>
           </ul>
         </div>
 
         <!-- Get in touch -->
-        <div class="flex flex-col gap-3">
+        <div class="flex flex-col gap-2">
           <a
             href="mailto:hi@alvaroso.dev"
-            class="bg-blue text-white font-black text-[24px] px-6 py-4 rounded-2xl flex items-center gap-2 hover:opacity-80 transition-opacity w-fit"
+            class="bg-blue text-white font-semibold text-[clamp(14px,1.8vw,24px)] px-5 py-3 rounded-2xl flex items-center gap-2 hover:opacity-80 transition-opacity w-fit"
           >
-            Get in touch <ArrowUpRight size={20} stroke-width={3} />
+            {t.footer.touch} <ArrowUpRight size={32} stroke-width={3} />
           </a>
-          <p class="text-ink text-[24px]">hi@alvaroso.dev</p>
+          <p class="text-ink text-[clamp(12px,1.5vw,24px)]">hi@alvaroso.dev</p>
         </div>
       </div>
-      <!-- Made by -->
-      <p class="text-ink text-[16px] mt-80">
-        Made with 💙 by <a
-          href="https://alvaroso.dev/"
-          class="underline font-semibold hover:opacity-60 transition-opacity"
-          >Alvaroso</a
+
+      <!-- Made by + language switcher -->
+      <div class="flex items-center gap-4 mt-12 md:mt-24">
+        <p class="text-ink text-[14px]">
+          {t.footer.madeBy} <a
+            href="https://alvaroso.dev/"
+            class="underline font-semibold hover:opacity-60 transition-opacity"
+            >Alvaroso</a
+          >
+        </p>
+        <span class="text-ink opacity-30 text-[14px]">·</span>
+        <a
+          href={t.nav.langSwitchHref}
+          class="text-ink text-[14px] font-bold hover:opacity-60 transition-opacity"
         >
-      </p>
+          {t.nav.langSwitch}
+        </a>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll<SVGPathElement>('.strip-footer').forEach((path) => {
+    const len = path.getTotalLength();
+    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+
+    ScrollTrigger.create({
+      trigger: path.closest('section'),
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        gsap.to(path, {
+          strokeDashoffset: 0,
+          duration: 1.8,
+          ease: 'power2.out',
+        });
+      },
+    });
+  });
+</script>

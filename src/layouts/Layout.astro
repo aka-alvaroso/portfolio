@@ -1,9 +1,17 @@
 ---
+import type { Locale } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
 
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -20,28 +28,31 @@
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
-    <meta
-      name="description"
-      content="Álvaro Barbero — Web Developer and Cybersecurity. Real software, built to last."
-    />
+    <meta name="description" content={t.meta.description} />
     <meta name="keywords" content="web developer, cybersecurity, portfolio, Álvaro Barbero" />
     <meta name="author" content="Álvaro Barbero" />
 
+    <!-- Hreflang -->
+    <link rel="canonical" href={`https://alvaroso.dev/${lang}/`} />
+    <link rel="alternate" hreflang="en" href="https://alvaroso.dev/en/" />
+    <link rel="alternate" hreflang="es" href="https://alvaroso.dev/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://alvaroso.dev/" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://alvaroso.dev/" />
-    <meta property="og:title" content="Álvaro Barbero — Web Developer" />
-    <meta property="og:description" content="Real software, built to last." />
+    <meta property="og:url" content={`https://alvaroso.dev/${lang}/`} />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.ogDescription} />
     <meta property="og:image" content="https://alvaroso.dev/metadata.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://alvaroso.dev/" />
-    <meta property="twitter:title" content="Álvaro Barbero — Web Developer" />
-    <meta property="twitter:description" content="Real software, built to last." />
+    <meta property="twitter:url" content={`https://alvaroso.dev/${lang}/`} />
+    <meta property="twitter:title" content={t.meta.title} />
+    <meta property="twitter:description" content={t.meta.ogDescription} />
     <meta property="twitter:image" content="https://alvaroso.dev/metadata.png" />
 
-    <title>Álvaro Barbero — Web Developer</title>
+    <title>{t.meta.title}</title>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BX8DLL9EJ"></script>
@@ -56,6 +67,35 @@
   <body class="bg-canvas text-ink font-sans overflow-x-hidden">
     <slot />
   </body>
+
+  <script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll<SVGPathElement>('.strip-path').forEach((path) => {
+      const length = path.getTotalLength();
+
+      gsap.set(path, {
+        strokeDasharray: length,
+        strokeDashoffset: length,
+      });
+
+      const section = path.closest('section') ?? path.closest('div');
+
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section ?? path,
+          start: 'top 85%',
+          end: 'bottom 20%',
+          scrub: 1.5,
+        },
+      });
+    });
+  </script>
 
   <style>
     html, body {

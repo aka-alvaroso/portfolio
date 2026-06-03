@@ -1,36 +1,87 @@
 ---
+import type { Locale } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section id="about" class="relative pt-[calc(55vh+100px)] md:pt-[calc(55vh+100px)] pb-32">
   <!-- Strip: blue (left side) — mobile -->
   <div class="sm:hidden absolute left-0 pointer-events-none z-10" style="top: calc(55vh + 100px); width: 100vw; max-width: 420px;">
-    <img src="/2026/strips/about-blue-mobile.svg" alt="" style="width: 100%; height: auto;" />
+    <svg viewBox="0 0 348 1681" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+      <path class="strip-about" d="M-27.5 30.7386C231.388 105.662 315.5 177.331 315.5 462.054C315.5 578.054 86 526.554 86 798.054C86 1024.01 201.38 1459.03 -24 1656.35" stroke="#48ACF0" stroke-width="64"/>
+    </svg>
+  </div>
+  <!-- Strip: blue (left side) — tablet -->
+  <div class="hidden sm:block xl:hidden absolute left-0 pointer-events-none z-10" style="top: calc(55vh + 100px); width: 45vw;">
+    <svg viewBox="0 0 382 1729" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+      <path class="strip-about" d="M-29 30.8508C257.759 109.845 349.5 174.821 349.5 472.177C349.5 588.177 120 536.677 120 808.177C120 1048.44 250.446 1525.05 -37 1700.97" stroke="#48ACF0" stroke-width="64"/>
+    </svg>
   </div>
   <!-- Strip: blue (left side) — desktop -->
-  <div class="hidden sm:block absolute pointer-events-none z-10" style="top: calc(55vh - 100px); left: -8vw;">
+  <div class="hidden xl:block absolute pointer-events-none z-10" style="top: calc(55vh - 100px); left: -8vw;">
     <svg style="width: clamp(400px, 45vw, 900px); height: auto;" viewBox="0 0 671 1876" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M-30 30.9489C488 167.096 638.5 166.738 638.5 547.596C638.5 663.596 409 612.096 409 883.596C409 1176.6 603 1821.1 -3.5 1843.1" stroke="#48ACF0" stroke-width="64"/>
+      <path class="strip-about" d="M-30 30.9489C488 167.096 638.5 166.738 638.5 547.596C638.5 663.596 409 612.096 409 883.596C409 1176.6 603 1821.1 -3.5 1843.1" stroke="#48ACF0" stroke-width="64"/>
     </svg>
   </div>
 
   <!-- Strip: yellow (right side) — mobile -->
   <div class="sm:hidden absolute right-0 pointer-events-none z-10" style="top: calc(55vh + 100px); width: 100vw; max-width: 420px;">
-    <img src="/2026/strips/about-yellow-mobile.svg" alt="" style="width: 100%; height: auto;" />
+    <svg viewBox="0 0 402 1628" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+      <path class="strip-about" d="M408.992 45.0154C202.668 36.67 -13.6574 -41.6864 29.565 314.331C100.416 897.923 353.344 569.262 353.344 851.186C353.344 1320.49 89.9094 1446.3 421 1598.01" stroke="#FFDB4D" stroke-width="64"/>
+    </svg>
+  </div>
+  <!-- Strip: yellow (right side) — tablet -->
+  <div class="hidden sm:block xl:hidden absolute right-0 pointer-events-none z-10" style="top: calc(55vh + 100px); width: 45vw;">
+    <svg viewBox="0 0 362 1584" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+      <path class="strip-about" d="M386.5 38.9136C178.633 23.3289 -5.47079 7.21692 38.5747 314.401C122.275 898.151 421.075 569.401 421.075 851.401C421.075 1276.14 166.306 1419.6 407.5 1555.46" stroke="#FFDB4D" stroke-width="64"/>
+    </svg>
   </div>
   <!-- Strip: yellow (right side) — desktop -->
-  <div class="hidden sm:block absolute right-0 pointer-events-none z-10" style="top: calc(55vh + 150px);">
+  <div class="hidden xl:block absolute right-0 pointer-events-none z-10" style="top: calc(55vh + 150px);">
     <svg style="width: clamp(420px, 45vw, 950px); height: auto;" viewBox="0 0 751 1888" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M856.574 10.3792C695.074 481.379 -45.1262 -102.371 38.5746 481.379C122.275 1065.13 421.075 736.379 421.075 1018.38C421.075 1576.24 -18.4255 1648.88 803.574 1856.38" stroke="#FFDB4D" stroke-width="64"/>
+      <path class="strip-about" d="M856.574 10.3792C695.074 481.379 -45.1262 -102.371 38.5746 481.379C122.275 1065.13 421.075 736.379 421.075 1018.38C421.075 1576.24 -18.4255 1648.88 803.574 1856.38" stroke="#FFDB4D" stroke-width="64"/>
     </svg>
   </div>
 
   <!-- Text -->
   <div class="relative z-0 w-full md:w-3/4 max-w-5xl mx-auto px-6 md:px-8">
     <p class="font-bold leading-[1.15] text-ink text-[clamp(1.75rem,4vw,3rem)]">
-      I'm Álvaro, a 22-year-old developer from Spain. I don't just write code, I build products. From the first commit to deployment, I care about what I'm building and why.
+      {t.about.p1}
     </p>
     <p class="font-bold leading-[1.15] text-ink mt-8 text-[clamp(1.75rem,4vw,3rem)]">
-      Good software isn't just functional. It works, and it holds.
+      {t.about.p2}
     </p>
   </div>
 </section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const section = document.getElementById('about');
+
+  document.querySelectorAll<SVGPathElement>('.strip-about').forEach((path) => {
+    const len = path.getTotalLength();
+    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+
+    const trigger = path.closest('div') ?? section;
+
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger,
+        start: 'top 90%',
+        end: 'bottom 10%',
+        scrub: 3,
+      },
+    });
+  });
+</script>

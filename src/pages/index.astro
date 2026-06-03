@@ -1,20 +1,22 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-import Conferences from "../components/Conferences.astro";
-import Footer from "../components/Footer.astro";
+// Language detection — redirects client-side to /en/ or /es/
 ---
 
-<Layout>
-  <Navbar />
-  <Hero />
-  <About />
-  <Experience />
-  <Projects />
-  <Conferences />
-  <Footer />
-</Layout>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Fallback for no-JS: go to English -->
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <title>Álvaro Barbero</title>
+    <script is:inline>
+      (function () {
+        var lang = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();
+        window.location.replace(lang.startsWith('es') ? '/es/' : '/en/');
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

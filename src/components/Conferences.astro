@@ -1,5 +1,13 @@
 ---
+import type { Locale } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
 
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section id="talks" class="relative pt-24 pb-32">
@@ -7,17 +15,28 @@
   <h2
     class="relative z-30 text-center font-black italic text-[clamp(2rem,5vw,3rem)] leading-none text-ink mb-12 md:mb-20"
   >
-    Talks
+    {t.conferences.title}
   </h2>
 
   <!-- Blue strip — mobile -->
   <div class="sm:hidden absolute left-0 pointer-events-none z-20" style="top: 45px; width: 100vw; max-width: 420px;">
-    <img src="/2026/strips/talks-blue-mobile.svg" alt="" style="width: 100%; height: auto;" />
+    <svg viewBox="0 0 402 1446" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+      <path class="strip-path" d="M410 5.58105C291.333 52.4144 -50.5 -27.4883 -50.5 134.081C-50.5 545.081 484 89.0811 443 627.081C254 850.581 9.49998 532.581 -50.5 871.081C-87.2405 1078.36 209.184 1003.68 303 1062.58C715.5 1321.58 252.5 1439.08 -61 1439.08" stroke="#48ACF0" stroke-width="12"/>
+    </svg>
   </div>
 
-  <!-- Blue S-curve strip — desktop -->
+  <!-- Blue strip — tablet -->
+  <div class="hidden sm:block xl:hidden absolute pointer-events-none z-0" style="top: 0; left: 0; width: 100vw;">
+    <svg viewBox="0 0 678 1647" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+      <g transform="translate(-50, 100)">
+        <path class="strip-path" d="M373.164 5.18335C292.866 52.0002 136.871 182.121 183.697 328.07C242.229 510.506 538.609 119.643 651.951 523.001C785.932 963.846 206.027 563.487 165.427 901.868C140.566 1109.07 283.007 1130.8 437.786 1155.28C680.163 1193.61 550.278 1509.26 85.5 1618.68C-36 1647.29 -23.5 1640.18 -23.5 1640.18" stroke="#48ACF0" stroke-width="12"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Blue strip — desktop -->
   <div
-    class="hidden md:block absolute pointer-events-none z-20"
+    class="hidden xl:block absolute pointer-events-none z-20"
     style="top: 120px; left: calc(-15% + 0px); width: 110%; height: 1700px;"
   >
     <svg
@@ -29,6 +48,7 @@
     >
       <path
         d="M730 5.58105C611.333 52.4144 380.8 182.581 450 328.581C536.5 511.081 974.5 120.081 1142 523.581C1340 964.581 483 564.081 423 902.581C386.26 1109.86 596.763 1131.59 825.5 1156.08C1278.5 1204.58 883.5 1681.58 -328.5 1647.08"
+        class="strip-path"
         stroke="#48ACF0"
         stroke-width="12"></path>
     </svg>
@@ -36,68 +56,24 @@
 
   <!-- Talk entries -->
   <div class="relative z-10 max-w-lg mx-auto px-6 md:px-8 flex flex-col gap-20 md:gap-48">
-    <!-- C1b3rWall 2024 -->
-    <div>
-      <h3 class="font-black italic text-[32px] leading-tight text-ink">
-        C1b3rWall 2024
-      </h3>
-      <p class="font-black text-[16px] text-ink mt-1">Jun 2024</p>
-      <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-        Speaker at Spain's National Police School about Flipper Zero and Web
-        Security.
-      </p>
-      <p class="text-ink text-[16px] font-bold mt-4">
-        Ávila, Spain · ~150 attendees
-      </p>
-    </div>
-
-    <!-- Security High School 2k24 -->
-    <div>
-      <h3 class="font-black italic text-[32px] leading-tight text-ink">
-        Security High School 2k24
-      </h3>
-      <p class="font-black text-[16px] text-ink mt-1">Feb 2024</p>
-      <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-        Workshop on Fake News and keynote on cybersecurity in front of 700
-        people.
-      </p>
-      <p class="text-ink text-[16px] font-bold mt-4">
-        Córdoba, Spain · ~700 attendees
-      </p>
-    </div>
-
-    <!-- CiberSotero 2024 -->
-    <div>
-      <h3 class="font-black italic text-[32px] leading-tight text-ink">
-        CiberSotero 2024
-      </h3>
-      <p class="font-black text-[16px] text-ink mt-1">Jan 2024</p>
-      <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-        Workshop on Fake Profiles and Web Security for Sotero Hernández's
-        students.
-      </p>
-      <p class="text-ink text-[16px] font-bold mt-4">
-        Sevilla, Spain · ~30 attendees
-      </p>
-    </div>
-
-    <!-- CascamorrasCON 2023 -->
-    <div>
-      <h3 class="font-black italic text-[32px] leading-tight text-ink">
-        CascamorrasCON 2023
-      </h3>
-      <p class="font-black text-[16px] text-ink mt-1">Oct 2023</p>
-      <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
-        Speaker on Mobile Security. My first experience on stage.
-      </p>
-      <p class="text-ink text-[16px] font-bold mt-4">
-        Granada, Spain · ~100 attendees
-      </p>
-    </div>
+    {t.conferences.items.map((talk) => (
+      <div>
+        <h3 class="font-black italic text-[32px] leading-tight text-ink">
+          {talk.name}
+        </h3>
+        <p class="font-black text-[16px] text-ink mt-1">{talk.date}</p>
+        <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">
+          {talk.description}
+        </p>
+        <p class="text-ink text-[16px] font-bold mt-4">
+          {talk.location}
+        </p>
+      </div>
+    ))}
   </div>
 
-  <!-- Yellow dashed circle (hover easter egg — interaction added in animation phase) -->
-  <div class="hidden md:block absolute pointer-events-none" style="top: 8%; right: 36%;">
+  <!-- Yellow dashed circle (hover easter egg) -->
+  <div class="hidden md:block absolute pointer-events-none" style="top: 8%; right: calc(36% - 200px);">
     <div class="relative">
       <svg
         width="153"
@@ -113,7 +89,7 @@
       <span
         class="absolute text-[#FFDB4D] font-bold text-[16px] text-center leading-tight whitespace-nowrap"
         style="top: -10px; right: 30px; transform: rotate(35deg); transform-origin: left center;"
-        >Hover to see!</span
+        >{t.conferences.hoverText}</span
       >
     </div>
   </div>
