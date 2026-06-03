@@ -1,89 +1,107 @@
 ---
+import type { Locale } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
 
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Redacted+Script:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
+
     <meta name="generator" content={Astro.generator} />
 
-    <!-- SEO Meta Tags -->
-    <meta
-      name="description"
-      content="Portfolio de Álvaro, desarrollador web. Descubre mis proyectos, experiencia y habilidades."
-    />
-    <meta
-      name="keywords"
-      content="desarrollo web, ciberseguridad, portfolio, Álvaro, programación, frontend, backend"
-    />
-    <meta name="author" content="Álvaro" />
+    <!-- SEO -->
+    <meta name="description" content={t.meta.description} />
+    <meta name="keywords" content="web developer, cybersecurity, portfolio, Álvaro Barbero" />
+    <meta name="author" content="Álvaro Barbero" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Hreflang -->
+    <link rel="canonical" href={`https://alvaroso.dev/${lang}/`} />
+    <link rel="alternate" hreflang="en" href="https://alvaroso.dev/en/" />
+    <link rel="alternate" hreflang="es" href="https://alvaroso.dev/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://alvaroso.dev/" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://alvaroso.dev/" />
-    <meta property="og:title" content="Alvaroso | Mi portafolio" />
-    <meta
-      property="og:description"
-      content="Portfolio de Álvaro, desarrollador web y especialista en ciberseguridad."
-    />
+    <meta property="og:url" content={`https://alvaroso.dev/${lang}/`} />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.ogDescription} />
     <meta property="og:image" content="https://alvaroso.dev/metadata.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://alvaroso.dev/" />
-    <meta property="twitter:title" content="Alvaroso | Mi portafolio" />
-    <meta
-      property="twitter:description"
-      content="Portfolio de Álvaro, desarrollador web y especialista en ciberseguridad."
-    />
-    <meta
-      property="twitter:image"
-      content="https://alvaroso.dev/metadata.png"
-    />
+    <meta property="twitter:url" content={`https://alvaroso.dev/${lang}/`} />
+    <meta property="twitter:title" content={t.meta.title} />
+    <meta property="twitter:description" content={t.meta.ogDescription} />
+    <meta property="twitter:image" content="https://alvaroso.dev/metadata.png" />
 
-    <title>Alvaroso | Mi portafolio</title>
+    <title>{t.meta.title}</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BX8DLL9EJ"
-    ></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BX8DLL9EJ"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-2BX8DLL9EJ");
     </script>
   </head>
 
-  <body class="bg-dark-bg">
-    <div class="background w-full h-full fixed top-0 left-0"></div>
+  <body class="bg-canvas text-ink font-sans overflow-x-hidden">
     <slot />
   </body>
 
+  <script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll<SVGPathElement>('.strip-path').forEach((path) => {
+      const length = path.getTotalLength();
+
+      gsap.set(path, {
+        strokeDasharray: length,
+        strokeDashoffset: length,
+      });
+
+      const section = path.closest('section') ?? path.closest('div');
+
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section ?? path,
+          start: 'top 85%',
+          end: 'bottom 20%',
+          scrub: 1.5,
+        },
+      });
+    });
+  </script>
+
   <style>
-    html,
-    body {
+    html, body {
       margin: 0;
       width: 100%;
-      font-family: "Inter", sans-serif;
       scroll-behavior: smooth;
-    }
-
-    .background {
-      z-index: -1;
-      background-image: url("/background.png");
     }
   </style>
 </html>

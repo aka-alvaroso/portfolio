@@ -1,122 +1,118 @@
-<section
-  id="experience"
-  class="w-11/12 max-w-2xl m-auto flex flex-col items-center justify-center mt-24 pt-10"
->
-  <h2 class="relative text-white text-4xl font-bold mb-20">
-    Mi experiencia
-    <span
-      class="section-title text-primary text-4xl font-bold absolute -bottom-5 -right-4"
-    >
-      experiencia
-    </span>
-  </h2>
+---
+import type { Locale } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
 
-  <!-- Experience 1 -->
-  <div class="flex items-start gap-8 justify-center">
-    <div class="flex flex-col items-center justify-center">
-      <div
-        class="w-[35px] h-[35px] bg-transparent border-2 border-solid border-primary rounded-full"
-      >
-      </div>
-      <div class="w-[1px] h-[150px] bg-primary my-5"></div>
-    </div>
-    <div class="flex flex-col items-start justify-center">
-      <div class="flex justify-center items-center gap-2">
-        <span class="text-2xl text-black font-bold bg-primary">1.</span>
-        <h3 class="text-white text-2xl font-bold">AllPentesting</h3>
-        <p class="text-white text-md opacity-50">12/2024 - 6/2025</p>
-      </div>
+interface Props {
+  lang: Locale;
+}
 
-      <div class="flex flex-col items-start justify-center">
-        <h4 class="text-primary text-lg font-bold mt-4">Descripción</h4>
-        <p class="text-white text-md">
-          Empecé las prácticas en formato DUAL de CFGS de DAW en la misma
-          empresa, dedicándome a proyectos más grandes e importantes de
-          desarrollo web como el panel de BalizasDigitales o un proyecto de
-          Ciberinteligencia.
-        </p>
-        <h4 class="text-primary text-lg font-bold mt-4">Rol</h4>
-        <p class="text-white text-md">Desarrollador Web (Prácticas)</p>
-      </div>
-    </div>
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="my-journey" class="relative pt-16 md:pt-24 pb-16 md:pb-32">
+
+  <!-- Title -->
+  <h2 class="relative z-10 text-center font-black italic text-[clamp(2rem,5vw,3rem)] leading-none text-ink mb-10 md:mb-16">{t.experience.title}</h2>
+
+  <!-- Column labels (hidden on mobile — shown inline with content) -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 hidden md:grid mb-4" style="grid-template-columns: 1fr 1fr; gap: clamp(2rem, 10vw, 16rem);">
+    <span class="text-[#48ACF0] font-black text-[24px] md:text-right md:pr-12 lg:text-center whitespace-pre-line">{t.experience.workLabel}</span>
+    <span class="text-[#FFDB4D] font-black text-[24px] md:text-left md:pl-12 lg:text-center">{t.experience.studiesLabel}</span>
   </div>
 
-  <!-- Experience 2 -->
-  <div class="mt-8 flex items-start gap-8 justify-center">
-    <div class="flex flex-col items-center justify-center">
-      <div
-        class="w-[35px] h-[35px] bg-transparent border-2 border-solid border-primary rounded-full"
-      >
-      </div>
-      <div class="w-[1px] h-[150px] bg-primary my-5"></div>
+  <!-- Now line (full viewport width) — mobile -->
+  <div class="md:hidden relative z-10 mb-8" style="width: 100vw; margin-left: calc(50% - 50vw);">
+    <div id="now-line-mobile" style="clip-path: inset(0 100% 0 0);">
+      <svg viewBox="0 0 402 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" style="height: 40px;">
+        <path d="M-10 31.9511C105.746 17.1772 252.982 5.81893 415.5 8.35578" stroke="#23CE6B" stroke-opacity="0.25" stroke-width="16" stroke-dasharray="32 32"/>
+      </svg>
     </div>
-    <div class="flex flex-col items-start justify-center">
-      <div class="flex justify-center items-center gap-2">
-        <span class="text-2xl text-black font-bold bg-primary">2.</span>
-        <h3 class="text-white text-2xl font-bold">Universidad de Zilina</h3>
-        <p class="text-white text-md opacity-50">3/2025 - 5/2025</p>
-      </div>
-
-      <div class="flex flex-col items-start justify-center">
-        <h4 class="text-primary text-lg font-bold mt-4">Descripción</h4>
-        <p class="text-white text-md">
-          Durante las prácticas DUAL, participé en un proyecto ERASMUS+ en
-          Eslovaquia desarrollando páginas internas de la Universidad de Zilina.
-          También recopilando y gestionando información sobre laboratorios de la
-          universidad.
-        </p>
-        <h4 class="text-primary text-lg font-bold mt-4">Rol</h4>
-        <p class="text-white text-md">Desarrollador Web (Prácticas)</p>
-      </div>
+    <span class="absolute left-1/2 -translate-x-1/2 -top-6 text-[#23CE6B] font-black text-[1rem]">{t.experience.now}</span>
+  </div>
+  <!-- Now line (full viewport width) — desktop -->
+  <div class="hidden md:block relative z-10 mb-12" style="width: 100vw; margin-left: calc(50% - 50vw);">
+    <div id="now-line-desktop" style="clip-path: inset(0 100% 0 0);">
+      <svg class="w-full" viewBox="0 0 1472 104" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height: 104px;">
+        <path d="M0 95.499C20 95.499 290 99.0533 397 71.1245C495.333 45.4578 775 -2.67548 1107 10.1245C1251 15.6763 1410.5 90.499 1472 90.499" stroke="#23CE6B" stroke-opacity="0.25" stroke-width="16" stroke-dasharray="32 32"/>
+      </svg>
     </div>
+    <span class="absolute left-1/2 -translate-x-1/2 -top-7 text-[#23CE6B] font-black text-[clamp(1rem,2.5vw,1.5rem)]">{t.experience.now}</span>
   </div>
 
-  <!-- Experience 3 -->
-  <div class="mt-8 flex items-start gap-8 justify-center">
-    <div class="flex flex-col items-center justify-center">
-      <div
-        class="w-[35px] h-[35px] bg-transparent border-2 border-solid border-primary rounded-full"
-      >
-      </div>
-      <div class="w-[1px] h-[170px] bg-primary my-5"></div>
+  <!-- Timeline content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+
+    <!-- Mobile: single column -->
+    <div class="flex flex-col gap-10 md:hidden">
+      <p class="text-ink underline font-black text-[20px]">{t.experience.workMobileLabel}</p>
+      {t.experience.jobs.map((job) => (
+        <div>
+          <h3 class="font-black italic text-[24px] leading-tight text-ink">{job.name}</h3>
+          <p class="font-black text-[14px] text-ink mt-1">{job.period}</p>
+          <p class="text-ink text-[16px] font-normal mt-2 leading-relaxed">{job.description}</p>
+        </div>
+      ))}
+
+      <p class="text-ink underline font-black text-[20px] mt-4">{t.experience.studiesMobileLabel}</p>
+      {t.experience.education.map((edu) => (
+        <div>
+          <h3 class="font-black italic text-[24px] leading-tight text-ink">{edu.name}</h3>
+          <p class="font-black text-[14px] text-ink mt-1">{edu.period}</p>
+          <p class="text-ink text-[16px] font-normal mt-2 leading-relaxed">{edu.description}</p>
+        </div>
+      ))}
     </div>
 
-    <div class="flex flex-col items-start justify-center">
-      <div class="flex justify-center items-center gap-2">
-        <span class="text-2xl text-black font-bold bg-primary">3.</span>
-        <h3 class="text-white text-2xl font-bold">AllPentesting</h3>
-        <p class="text-white text-md opacity-50">06/2023 - 12/2024</p>
+    <!-- Desktop: two columns -->
+    <div class="hidden md:grid md:gap-24 lg:gap-64" style="grid-template-columns: 1fr 1fr;">
+      <!-- Left: Work Experience -->
+      <div class="flex flex-col gap-14">
+        {t.experience.jobs.map((job) => (
+          <div>
+            <h3 class="font-black italic text-[clamp(1.25rem,2.5vw,2rem)] leading-tight text-ink">{job.name}</h3>
+            <p class="font-black text-[16px] text-ink mt-1">{job.period}</p>
+            <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">{job.description}</p>
+          </div>
+        ))}
       </div>
 
-      <div class="flex flex-col items-start justify-center">
-        <h4 class="text-primary text-lg font-bold mt-4">Descripción</h4>
-        <p class="text-white text-md">
-          Después de terminar la FCT de SMR, continué trabajando como Analista
-          de Inteligencia y Desarrollador Web, haciendo diferentes web con
-          WordPress para distintas como empresas
-          <a
-            href="https://consultechdigital.com/"
-            target="_blank"
-            class="text-primary">Consultech Digital</a
-          >
-          o
-          <a
-            href="https://construccionesrafaelbonilla.com/"
-            target="_blank"
-            class="text-primary">Construcciones Bonilla</a
-          >.
-        </p>
-        <h4 class="text-primary text-lg font-bold mt-4">Rol</h4>
-        <p class="text-white text-md">
-          Analista de Inteligencia & Desarrollador Web
-        </p>
+      <!-- Right: Studies -->
+      <div class="flex flex-col gap-14">
+        {t.experience.education.map((edu) => (
+          <div>
+            <h3 class="font-black italic text-[clamp(1.25rem,2.5vw,2rem)] leading-tight text-ink">{edu.name}</h3>
+            <p class="font-black text-[16px] text-ink mt-1">{edu.period}</p>
+            <p class="text-ink text-[20px] font-normal mt-3 leading-relaxed">{edu.description}</p>
+          </div>
+        ))}
       </div>
     </div>
+
   </div>
+
 </section>
 
-<style>
-  span.section-title {
-    font-family: "Redacted Script", cursive;
-  }
-</style>
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  ['now-line-mobile', 'now-line-desktop'].forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(el, {
+          clipPath: 'inset(0 0% 0 0)',
+          duration: 1.4,
+          ease: 'power2.inOut',
+        });
+      },
+    });
+  });
+</script>
