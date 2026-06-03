@@ -131,6 +131,7 @@ export const es = {
   conferences: {
     title: "Charlas",
     hoverText: "¡Pasa el cursor!",
+    noPhoto: "Sin foto de este evento.",
     items: [
       {
         name: "C1b3rWall 2024",
