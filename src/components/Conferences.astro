@@ -8,6 +8,13 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+const conferenceImages = [
+  "/2026/Conferences/C1b3rWall.jpeg",
+  "/2026/Conferences/SHS.jpeg",
+  null,
+  "/2026/Conferences/Cascamorras.jpeg",
+];
 ---
 
 <section id="talks" class="relative pt-24 pb-32">
@@ -56,8 +63,12 @@ const t = useTranslations(lang);
 
   <!-- Talk entries -->
   <div class="relative z-10 max-w-lg mx-auto px-6 md:px-8 flex flex-col gap-20 md:gap-48">
-    {t.conferences.items.map((talk) => (
-      <div>
+    {t.conferences.items.map((talk, i) => (
+      <div
+        class="talk-item cursor-default"
+        data-image={conferenceImages[i] ?? ""}
+        data-has-image={conferenceImages[i] ? "true" : "false"}
+      >
         <h3 class="font-black italic text-[32px] leading-tight text-ink">
           {talk.name}
         </h3>
@@ -70,6 +81,17 @@ const t = useTranslations(lang);
         </p>
       </div>
     ))}
+  </div>
+
+  <!-- Floating talk preview -->
+  <div
+    id="talk-preview"
+    class="fixed top-0 left-0 z-50 w-72 rounded-2xl overflow-hidden pointer-events-none shadow-2xl hidden md:block"
+  >
+    <img id="talk-preview-img" src="" alt="" class="w-full aspect-[4/3] object-cover" />
+    <div id="talk-preview-empty" class="w-full aspect-[4/3] bg-ink/[0.05] flex items-center justify-center hidden">
+      <p class="text-ink/40 font-bold text-[0.85rem] text-center px-6">{t.conferences.noPhoto}</p>
+    </div>
   </div>
 
   <!-- Yellow dashed circle (hover easter egg) -->
@@ -94,3 +116,42 @@ const t = useTranslations(lang);
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from 'gsap';
+
+  const preview    = document.getElementById('talk-preview') as HTMLElement;
+  const previewImg = document.getElementById('talk-preview-img') as HTMLImageElement;
+  const previewEmpty = document.getElementById('talk-preview-empty') as HTMLElement;
+
+  gsap.set(preview, { opacity: 0, scale: 0.9 });
+
+  const xTo = gsap.quickTo(preview, 'x', { duration: 0.4, ease: 'power2.out' });
+  const yTo = gsap.quickTo(preview, 'y', { duration: 0.4, ease: 'power2.out' });
+
+  window.addEventListener('mousemove', (e) => {
+    xTo(e.clientX + 28);
+    yTo(e.clientY - 120);
+  });
+
+  document.querySelectorAll<HTMLElement>('.talk-item').forEach((item) => {
+    item.addEventListener('mouseenter', () => {
+      const hasImage = item.dataset.hasImage === 'true';
+
+      if (hasImage) {
+        previewImg.src = item.dataset.image!;
+        previewImg.classList.remove('hidden');
+        previewEmpty.classList.add('hidden');
+      } else {
+        previewImg.classList.add('hidden');
+        previewEmpty.classList.remove('hidden');
+      }
+
+      gsap.to(preview, { opacity: 1, scale: 1, duration: 0.22, ease: 'power2.out' });
+    });
+
+    item.addEventListener('mouseleave', () => {
+      gsap.to(preview, { opacity: 0, scale: 0.9, duration: 0.16, ease: 'power2.in' });
+    });
+  });
+</script>

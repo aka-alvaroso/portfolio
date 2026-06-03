@@ -130,6 +130,7 @@ export const en = {
   conferences: {
     title: "Talks",
     hoverText: "Hover to see!",
+    noPhoto: "No photo from this one.",
     items: [
       {
         name: "C1b3rWall 2024",
