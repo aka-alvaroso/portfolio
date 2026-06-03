@@ -114,7 +114,7 @@ export const es = {
         name: "Moka.",
         description:
           "Herramienta visual para crear contenido en redes sociales. Fondos degradados, animaciones, exportación de vídeo y soporte para mockups de iPhone.",
-        href: "https://moka.so/",
+        href: "https://alvaroso.dev/moka/",
         tagline: "Contenido bonito, en segundos.",
         period: "May 2026 – Hoy",
         why: "Creaba contenido para redes y las exportaciones siempre quedaban sosas. Quería fondos bonitos, pero también poder animar y exportar vídeo, no solo imágenes estáticas. Nada hacía todo eso a la vez, así que lo construí yo. Aún en desarrollo, a punto de salir.",
