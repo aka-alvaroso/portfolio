@@ -1,5 +1,6 @@
 ---
 import { X, Folder, Compass, Mic2 } from "@lucide/astro";
+import Settings from './Settings.astro';
 import type { Locale } from '../i18n/utils';
 import { useTranslations } from '../i18n/utils';
 
@@ -55,9 +56,10 @@ const links = [
       ))}
     </ul>
 
-    <!-- Mobile hamburger -->
-    <div class="flex items-center gap-4 pt-4 md:hidden">
-      <button id="mobile-menu-btn" class="text-ink" aria-label="Menu">
+    <!-- Right side: settings always visible, hamburger mobile only -->
+    <div class="flex items-center gap-3 pt-4 md:pt-6">
+      <Settings lang={lang} />
+      <button id="mobile-menu-btn" class="text-ink md:hidden" aria-label="Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
           <line x1="3" y1="12" x2="21" y2="12"/>
@@ -108,48 +110,37 @@ const links = [
   const mobileMenu  = document.getElementById('mobile-menu');
   const mobileLinks = document.querySelectorAll<HTMLElement>('.mobile-nav-link');
 
-  // ── Desktop / Tablet strip: draw left→right on load ───────────
+  const noEffects = document.documentElement.hasAttribute('data-no-effects');
   const navStrips = [desktopPath, tabletPath].filter(Boolean) as SVGPathElement[];
 
-  navStrips.forEach((path) => {
-    const len = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
-    gsap.to(path, { strokeDashoffset: 0, duration: 0.9, ease: 'power2.out', delay: 0.2 });
-  });
-
-  // ── Scroll: hide strip + links on down, show on up ────────────
-  let lastY   = 0;
-  let visible = true;
-
-  function hideNav() {
-    if (!visible) return;
-    visible = false;
+  // ── Desktop / Tablet strip ─────────────────────────────────────
+  if (!noEffects) {
     navStrips.forEach((path) => {
       const len = path.getTotalLength();
-      gsap.to(path, { strokeDashoffset: len, duration: 0.4, ease: 'power2.in' });
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.to(path, { strokeDashoffset: 0, duration: 0.9, ease: 'power2.out', delay: 0.2 });
     });
-    if (navLinks) gsap.to(navLinks, { opacity: 0, y: -6, duration: 0.3, ease: 'power2.in', pointerEvents: 'none' });
+
+    let lastY = 0, visible = true;
+    function hideNav() {
+      if (!visible) return; visible = false;
+      navStrips.forEach((p) => gsap.to(p, { strokeDashoffset: p.getTotalLength(), duration: 0.4, ease: 'power2.in' }));
+      if (navLinks) gsap.to(navLinks, { opacity: 0, y: -6, duration: 0.3, ease: 'power2.in', pointerEvents: 'none' });
+    }
+    function showNav() {
+      if (visible) return; visible = true;
+      navStrips.forEach((p) => gsap.to(p, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' }));
+      if (navLinks) gsap.to(navLinks, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', pointerEvents: 'auto' });
+    }
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > lastY && y > 60) hideNav(); else if (y < lastY) showNav();
+      lastY = y;
+    }, { passive: true });
   }
 
-  function showNav() {
-    if (visible) return;
-    visible = true;
-    navStrips.forEach((path) => {
-      const len = path.getTotalLength();
-      gsap.to(path, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' });
-    });
-    if (navLinks) gsap.to(navLinks, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', pointerEvents: 'auto' });
-  }
-
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y > lastY && y > 60) hideNav();
-    else if (y < lastY)      showNav();
-    lastY = y;
-  }, { passive: true });
-
-  // ── Mobile menu: strip top→bottom on open, reverse on close ───
-  if (mobilePath) {
+  // ── Mobile menu ────────────────────────────────────────────────
+  if (!noEffects && mobilePath) {
     const mobileLen = mobilePath.getTotalLength();
     gsap.set(mobilePath, { strokeDasharray: mobileLen, strokeDashoffset: mobileLen });
     gsap.set(mobileLinks, { opacity: 0, x: -20 });
@@ -158,34 +149,30 @@ const links = [
   function openMenu() {
     mobileMenu?.classList.remove('hidden');
     mobileMenu?.classList.add('flex');
-    if (mobilePath) {
-      const len = mobilePath.getTotalLength();
-      gsap.to(mobilePath, { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out' });
+    if (!noEffects) {
+      if (mobilePath) gsap.to(mobilePath, { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out' });
+      gsap.to(mobileLinks, { opacity: 1, x: 0, duration: 0.35, stagger: 0.08, ease: 'power2.out', delay: 0.25 });
+    } else {
+      gsap.set(mobileLinks, { opacity: 1, x: 0 });
     }
-    gsap.to(mobileLinks, {
-      opacity: 1, x: 0,
-      duration: 0.35,
-      stagger: 0.08,
-      ease: 'power2.out',
-      delay: 0.25,
-    });
   }
 
   function closeMenu() {
-    gsap.to(mobileLinks, { opacity: 0, x: -20, duration: 0.2, ease: 'power2.in', stagger: 0.05 });
-    if (mobilePath) {
-      const len = mobilePath.getTotalLength();
-      gsap.to(mobilePath, {
-        strokeDashoffset: len,
-        duration: 0.4,
-        ease: 'power2.in',
-        delay: 0.15,
-        onComplete: () => {
-          mobileMenu?.classList.add('hidden');
-          mobileMenu?.classList.remove('flex');
-          gsap.set(mobileLinks, { opacity: 0, x: -20 });
-        },
-      });
+    if (!noEffects) {
+      gsap.to(mobileLinks, { opacity: 0, x: -20, duration: 0.2, ease: 'power2.in', stagger: 0.05 });
+      if (mobilePath) {
+        gsap.to(mobilePath, {
+          strokeDashoffset: mobilePath.getTotalLength(), duration: 0.4, ease: 'power2.in', delay: 0.15,
+          onComplete: () => {
+            mobileMenu?.classList.add('hidden');
+            mobileMenu?.classList.remove('flex');
+            gsap.set(mobileLinks, { opacity: 0, x: -20 });
+          },
+        });
+      } else {
+        mobileMenu?.classList.add('hidden');
+        mobileMenu?.classList.remove('flex');
+      }
     } else {
       mobileMenu?.classList.add('hidden');
       mobileMenu?.classList.remove('flex');
@@ -196,7 +183,8 @@ const links = [
   document.getElementById('mobile-menu-close')?.addEventListener('click', closeMenu);
 
   // ── Desktop nav icon hover ─────────────────────────────────────
-  document.querySelectorAll('.nav-item').forEach((item) => {
+  if (noEffects) { /* skip */ }
+  else document.querySelectorAll('.nav-item').forEach((item) => {
     const icon = item.querySelector('.nav-icon') as HTMLElement;
     if (!icon) return;
     gsap.set(icon, { y: 8, opacity: 0, scale: 0.8 });
@@ -204,5 +192,5 @@ const links = [
       gsap.to(icon, { y: 0, opacity: 1, scale: 1.2, duration: 0.25, ease: 'power2.out' }));
     item.addEventListener('mouseleave', () =>
       gsap.to(icon, { y: 8, opacity: 0, scale: 0.8, duration: 0.2, ease: 'power2.in' }));
-  });
+  })
 </script>

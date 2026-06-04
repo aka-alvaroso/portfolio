@@ -273,19 +273,17 @@ const projects = t.projects.items.map((item) => ({
   gsap.registerPlugin(ScrollTrigger);
 
   // ─── Strip scroll animations ─────────────────────────────────────────────────
-  document.querySelectorAll<SVGPathElement>('.strip-projects').forEach((path) => {
-    const len = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
-    const slide = path.closest('.project-slide');
-    ScrollTrigger.create({
-      trigger: slide,
-      start: 'top 80%',
-      once: true,
-      onEnter: () => {
-        gsap.to(path, { strokeDashoffset: 0, duration: 2.5, ease: 'power1.inOut' });
-      },
+  if (!document.documentElement.hasAttribute('data-no-effects')) {
+    document.querySelectorAll<SVGPathElement>('.strip-projects').forEach((path) => {
+      const len = path.getTotalLength();
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      const slide = path.closest('.project-slide');
+      ScrollTrigger.create({
+        trigger: slide, start: 'top 80%', once: true,
+        onEnter: () => gsap.to(path, { strokeDashoffset: 0, duration: 2.5, ease: 'power1.inOut' }),
+      });
     });
-  });
+  }
 
   // ─── Modal ───────────────────────────────────────────────────────────────────
 

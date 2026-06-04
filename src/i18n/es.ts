@@ -163,6 +163,12 @@ export const es = {
       },
     ],
   },
+  settings: {
+    language: "Idioma",
+    effects: "Efectos",
+    on: "Activados",
+    off: "Desactivados",
+  },
   footer: {
     title1: "Construyamos",
     title2: "algo juntos",
