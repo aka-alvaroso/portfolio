@@ -84,37 +84,17 @@ const t = useTranslations(lang);
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
 
-  const section = document.querySelector('section');
-
-  // Desktop / tablet: se desarrollan mientras scrolleas el hero
-  document.querySelectorAll<SVGPathElement>('.strip-hero-desktop').forEach((path) => {
-    const len = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 2,
-      },
+  if (!document.documentElement.hasAttribute('data-no-effects')) {
+    const section = document.querySelector('section');
+    ['strip-hero-desktop', 'strip-hero-mobile'].forEach((cls) => {
+      document.querySelectorAll<SVGPathElement>(`.${cls}`).forEach((path) => {
+        const len = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+        gsap.to(path, {
+          strokeDashoffset: 0, ease: 'none',
+          scrollTrigger: { trigger: section, start: 'top top', end: 'bottom top', scrub: 2 },
+        });
+      });
     });
-  });
-
-  // Mobile: arriba→abajo (paths ya invertidos)
-  document.querySelectorAll<SVGPathElement>('.strip-hero-mobile').forEach((path) => {
-    const len = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 2,
-      },
-    });
-  });
+  }
 </script>

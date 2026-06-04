@@ -13,6 +13,11 @@ const t = useTranslations(lang);
 <!doctype html>
 <html lang={lang}>
   <head>
+    <script is:inline>
+      if (localStorage.getItem('effects') === 'off') {
+        document.documentElement.setAttribute('data-no-effects', '');
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -76,6 +81,7 @@ const t = useTranslations(lang);
 
     gsap.registerPlugin(ScrollTrigger);
 
+    if (!document.documentElement.hasAttribute('data-no-effects'))
     document.querySelectorAll<SVGPathElement>('.strip-path').forEach((path) => {
       const length = path.getTotalLength();
 
@@ -107,9 +113,21 @@ const t = useTranslations(lang);
     }
   </style>
 
+  <style is:global>
+    /* Talk preview: hide entirely in no-effects (GSAP never sets opacity:0) */
+    html[data-no-effects] #talk-preview {
+      display: none !important;
+    }
+    /* About + Conferences strips: send behind text so they don't cover content */
+    html[data-no-effects] div:has(.strip-about),
+    html[data-no-effects] #talks div:has(.strip-path) {
+      z-index: -1 !important;
+    }
+  </style>
+
 
 <script>
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    if (!document.documentElement.hasAttribute('data-no-effects') && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       const canvas = document.createElement('canvas');
       canvas.style.cssText = 'position:fixed;top:0;left:0;pointer-events:none;z-index:9999';
       document.body.appendChild(canvas);

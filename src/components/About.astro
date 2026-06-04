@@ -65,43 +65,32 @@ const t = useTranslations(lang);
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
 
-  const section = document.getElementById('about');
+  if (!document.documentElement.hasAttribute('data-no-effects')) {
+    const section = document.getElementById('about');
+    const mm = gsap.matchMedia();
 
-  const mm = gsap.matchMedia();
-
-  mm.add('(max-width: 639px)', () => {
-    const p2 = document.getElementById('about-p2');
-    document.querySelectorAll<SVGPathElement>('.strip-about').forEach((path) => {
-      const len = path.getTotalLength();
-      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: p2,
-          start: 'bottom 50%',
-          end: 'bottom -30%',
-          scrub: 6,
-        },
+    mm.add('(max-width: 639px)', () => {
+      const p2 = document.getElementById('about-p2');
+      document.querySelectorAll<SVGPathElement>('.strip-about').forEach((path) => {
+        const len = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+        gsap.to(path, {
+          strokeDashoffset: 0, ease: 'none',
+          scrollTrigger: { trigger: p2, start: 'bottom 50%', end: 'bottom -30%', scrub: 6 },
+        });
       });
     });
-  });
 
-  mm.add('(min-width: 640px)', () => {
-    const p1 = document.getElementById('about-p1');
-    document.querySelectorAll<SVGPathElement>('.strip-about').forEach((path) => {
-      const len = path.getTotalLength();
-      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
-      gsap.to(path, {
-        strokeDashoffset: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: p1,
-          start: 'center 50%',
-          end: 'bottom -50%',
-          scrub: 3,
-        },
+    mm.add('(min-width: 640px)', () => {
+      const p1 = document.getElementById('about-p1');
+      document.querySelectorAll<SVGPathElement>('.strip-about').forEach((path) => {
+        const len = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+        gsap.to(path, {
+          strokeDashoffset: 0, ease: 'none',
+          scrollTrigger: { trigger: p1, start: 'center 50%', end: 'bottom -50%', scrub: 3 },
+        });
       });
     });
-  });
+  }
 </script>

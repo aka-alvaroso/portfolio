@@ -161,6 +161,12 @@ export const en = {
       },
     ],
   },
+  settings: {
+    language: "Language",
+    effects: "Effects",
+    on: "On",
+    off: "Off",
+  },
   footer: {
     title1: "Let's work",
     title2: "together",

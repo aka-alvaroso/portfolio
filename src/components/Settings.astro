@@ -1,0 +1,108 @@
+---
+import { SlidersHorizontal } from "@lucide/astro";
+import type { Locale } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+  direction?: 'down' | 'up';
+}
+
+const { lang, direction = 'down' } = Astro.props;
+const t = useTranslations(lang);
+
+const panelPos = direction === 'up'
+  ? 'bottom: calc(100% + 8px); top: auto;'
+  : 'top: calc(100% + 8px); bottom: auto;';
+---
+
+<div class="settings-root relative inline-flex">
+  <button
+    class="settings-trigger flex items-center justify-center text-ink"
+    aria-label="Settings"
+    aria-expanded="false"
+  >
+    <SlidersHorizontal size={24} stroke-width={3} />
+  </button>
+
+  <div
+    class="settings-panel absolute right-0 w-52 bg-canvas rounded-2xl shadow-[0_4px_32px_rgba(19,19,19,0.10)] p-4 z-[300]"
+    style={`opacity:0;pointer-events:none;transform:translateY(-6px);${panelPos}`}
+  >
+    <!-- Language -->
+    <p class="font-black text-[10px] uppercase tracking-widest text-ink/40 mb-2">{t.settings.language}</p>
+    <div class="flex gap-2 mb-4">
+      <a
+        href="/en/"
+        class={`flex-1 text-center py-1.5 rounded-xl font-black text-sm transition-colors ${lang === 'en' ? 'bg-ink text-canvas' : 'text-ink/50 hover:text-ink'}`}
+      >EN</a>
+      <a
+        href="/es/"
+        class={`flex-1 text-center py-1.5 rounded-xl font-black text-sm transition-colors ${lang === 'es' ? 'bg-ink text-canvas' : 'text-ink/50 hover:text-ink'}`}
+      >ES</a>
+    </div>
+
+    <!-- Effects -->
+    <p class="font-black text-[10px] uppercase tracking-widest text-ink/40 mb-2">{t.settings.effects}</p>
+    <button class="effects-toggle w-full flex items-center justify-between px-1 py-1 rounded-xl hover:bg-ink/[0.05] transition-colors">
+      <span
+        class="effects-label font-black text-sm text-ink"
+        data-on={t.settings.on}
+        data-off={t.settings.off}
+      ></span>
+      <div class="effects-track w-10 h-5 rounded-full relative transition-colors duration-200">
+        <div class="effects-thumb absolute top-0.5 w-4 h-4 rounded-full transition-all duration-200"></div>
+      </div>
+    </button>
+  </div>
+</div>
+
+<script>
+  import gsap from 'gsap';
+
+  document.querySelectorAll<HTMLElement>('.settings-root').forEach((root) => {
+    const trigger = root.querySelector<HTMLElement>('.settings-trigger')!;
+    const panel   = root.querySelector<HTMLElement>('.settings-panel')!;
+    const toggle  = root.querySelector<HTMLElement>('.effects-toggle')!;
+    const label   = root.querySelector<HTMLElement>('.effects-label')!;
+    const track   = root.querySelector<HTMLElement>('.effects-track')!;
+    const thumb   = root.querySelector<HTMLElement>('.effects-thumb')!;
+
+    let open = false;
+
+    const isOff = () => localStorage.getItem('effects') === 'off';
+
+    function syncUI() {
+      const off = isOff();
+      label.textContent  = off ? label.dataset.off! : label.dataset.on!;
+      track.style.background = off ? 'rgba(19,19,19,0.15)' : '#131313';
+      thumb.style.background = off ? '#131313' : '#FEF9FF';
+      thumb.style.left       = off ? '2px' : 'calc(100% - 18px)';
+    }
+    syncUI();
+
+    function openPanel() {
+      open = true;
+      trigger.setAttribute('aria-expanded', 'true');
+      panel.style.pointerEvents = 'auto';
+      gsap.to(panel, { opacity: 1, y: 0, duration: 0.2, ease: 'power2.out' });
+    }
+
+    function closePanel() {
+      open = false;
+      trigger.setAttribute('aria-expanded', 'false');
+      panel.style.pointerEvents = 'none';
+      gsap.to(panel, { opacity: 0, y: -6, duration: 0.15, ease: 'power2.in' });
+    }
+
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); open ? closePanel() : openPanel(); });
+    panel.addEventListener('click',   (e) => e.stopPropagation());
+    document.addEventListener('click', () => { if (open) closePanel(); });
+
+    toggle.addEventListener('click', () => {
+      if (isOff()) localStorage.removeItem('effects');
+      else         localStorage.setItem('effects', 'off');
+      window.location.reload();
+    });
+  });
+</script>
