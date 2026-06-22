@@ -92,23 +92,6 @@ export const en = {
         ],
       },
       {
-        id: "keypro",
-        name: "KeyPro.",
-        description:
-          "Online typing trainer with multiplayer modes. Race against others, play in teams, or challenge yourself across multiple game modes.",
-        href: "https://alvaroso.dev/keypro/",
-        tagline: "Type faster. Race smarter.",
-        period: "Sep 2023 – Today",
-        why: "This one started everything. Before KeyPro I'd never touched Node.js or React. Building it was how I learned both.",
-        features: [
-          "Real-time multiplayer races",
-          "Team vs team mode",
-          "Multiple game modes and difficulties",
-          "WPM and accuracy tracking",
-          "Global leaderboard",
-        ],
-      },
-      {
         id: "moka",
         name: "Moka.",
         description:
@@ -123,6 +106,23 @@ export const en = {
           "Video export (mp4)",
           "iPhone mockup support",
           "One-click high-res export",
+        ],
+      },
+      {
+        id: "keypro",
+        name: "KeyPro.",
+        description:
+          "Online typing trainer with multiplayer modes. Race against others, play in teams, or challenge yourself across multiple game modes.",
+        href: "https://alvaroso.dev/keypro/",
+        tagline: "Type faster. Race smarter.",
+        period: "Sep 2023 – Today",
+        why: "This one started everything. Before KeyPro I'd never touched Node.js or React. Building it was how I learned both.",
+        features: [
+          "Real-time multiplayer races",
+          "Team vs team mode",
+          "Multiple game modes and difficulties",
+          "WPM and accuracy tracking",
+          "Global leaderboard",
         ],
       },
     ],
