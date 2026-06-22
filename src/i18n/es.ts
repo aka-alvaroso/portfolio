@@ -2,8 +2,8 @@ export const es = {
   meta: {
     title: "Álvaro Barbero — Desarrollador Web",
     description:
-      "Álvaro Barbero — Desarrollo web y ciberseguridad. Software que se lanza, productos que perduran.",
-    ogDescription: "Software que se lanza. Productos que perduran.",
+      "Álvaro Barbero — Desarrollo web y ciberseguridad. Software que funciona, productos que duran.",
+    ogDescription: "Software que funciona. Productos que duran.",
   },
   nav: {
     projects: "Proyectos",
@@ -13,8 +13,8 @@ export const es = {
     langSwitchHref: "/en/",
   },
   hero: {
-    headline1: "Software que se lanza.",
-    headline2: "Productos que perduran.",
+    headline1: "Software que funciona.",
+    headline2: "Productos que duran.",
     ctaWork: "Hablemos",
     ctaSee: "Ver mi trabajo",
   },
@@ -93,23 +93,6 @@ export const es = {
         ],
       },
       {
-        id: "keypro",
-        name: "KeyPro.",
-        description:
-          "Entrenador de mecanografía online con modos multijugador. Compite contra otros, juega en equipos o supérate a ti mismo en varios modos de juego.",
-        href: "https://alvaroso.dev/keypro/",
-        tagline: "Escribe más rápido. Compite en serio.",
-        period: "Sep 2023 – Hoy",
-        why: "Este fue el que lo empezó todo. Antes de KeyPro nunca había tocado Node.js ni React. Construirlo fue cómo aprendí los dos.",
-        features: [
-          "Carreras multijugador en tiempo real",
-          "Modo equipos",
-          "Varios modos de juego y dificultades",
-          "Seguimiento de PPM y precisión",
-          "Ranking global",
-        ],
-      },
-      {
         id: "moka",
         name: "Moka.",
         description:
@@ -124,6 +107,23 @@ export const es = {
           "Exportación de vídeo (mp4)",
           "Soporte para mockup de iPhone",
           "Exportación de alta resolución con un clic",
+        ],
+      },
+      {
+        id: "keypro",
+        name: "KeyPro.",
+        description:
+          "Entrenador de mecanografía online con modos multijugador. Compite contra otros, juega en equipos o supérate a ti mismo en varios modos de juego.",
+        href: "https://alvaroso.dev/keypro/",
+        tagline: "Escribe más rápido. Compite en serio.",
+        period: "Sep 2023 – Hoy",
+        why: "Este fue el que lo empezó todo. Antes de KeyPro nunca había tocado Node.js ni React. Construirlo fue cómo aprendí los dos.",
+        features: [
+          "Carreras multijugador en tiempo real",
+          "Modo equipos",
+          "Varios modos de juego y dificultades",
+          "Seguimiento de PPM y precisión",
+          "Ranking global",
         ],
       },
     ],
