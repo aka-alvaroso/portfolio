@@ -122,15 +122,23 @@ const links = [
     });
 
     let lastY = 0, visible = true;
+    function resetNavIcons() {
+      document.querySelectorAll<HTMLElement>('.nav-icon').forEach((icon) => {
+        gsap.killTweensOf(icon);
+        gsap.set(icon, { y: 8, opacity: 0, scale: 0.8 });
+      });
+    }
     function hideNav() {
       if (!visible) return; visible = false;
       navStrips.forEach((p) => gsap.to(p, { strokeDashoffset: p.getTotalLength(), duration: 0.4, ease: 'power2.in' }));
       if (navLinks) gsap.to(navLinks, { opacity: 0, y: -6, duration: 0.3, ease: 'power2.in', pointerEvents: 'none' });
+      resetNavIcons();
     }
     function showNav() {
       if (visible) return; visible = true;
       navStrips.forEach((p) => gsap.to(p, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' }));
       if (navLinks) gsap.to(navLinks, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', pointerEvents: 'auto' });
+      resetNavIcons();
     }
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
