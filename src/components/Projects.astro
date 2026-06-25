@@ -29,7 +29,7 @@ const projectStrips = [
   },
   {
     id: "moka",
-    image: "/2026/moka.png",
+    image: "/2026/projects/moka_1.png",
     images: [
       "/2026/projects/moka_1.png",
       "/2026/projects/moka_2.png",
@@ -392,6 +392,7 @@ const projects = t.projects.items.map((item) => ({
     populate(data);
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    (window as any).lenis?.stop();
 
     gsap.set(panel, { y: 60, opacity: 0 });
     gsap.set(backdrop, { backgroundColor: 'rgba(19,19,19,0)' });
@@ -408,6 +409,7 @@ const projects = t.projects.items.map((item) => ({
       onComplete: () => {
         modal.style.display = 'none';
         document.body.style.overflow = '';
+        (window as any).lenis?.start();
       },
     })
       .to(panel, { y: 40, opacity: 0, duration: 0.3, ease: 'power2.in' })
