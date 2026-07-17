@@ -1,10 +1,10 @@
 export const es = {
   meta: {
-    title: "Álvaro Barbero — Desarrollador Web",
+    title: "Álvaro Barbero - Desarrollador Web",
     description:
-      "Álvaro Barbero — Desarrollo web y ciberseguridad. Software que funciona, productos que duran.",
+      "Álvaro Barbero - Desarrollo web y ciberseguridad. Software que funciona, productos que duran.",
     ogDescription: "Desarrollo web y ciberseguridad desde España. Creo software real y productos que perduran, del primer commit al despliegue.",
-    ogImageAlt: "Álvaro Barbero — Desarrollo web y ciberseguridad",
+    ogImageAlt: "Álvaro Barbero - Desarrollo web y ciberseguridad",
   },
   nav: {
     projects: "Proyectos",
@@ -33,13 +33,13 @@ export const es = {
     jobs: [
       {
         name: "AllPentesting",
-        period: "Jun. 2023 – May. 2026",
+        period: "Jun. 2023 - May. 2026",
         description:
           "Desarrollador Web en AllPentesting desde 2023. Empecé construyendo webs para clientes y acabé siendo responsable de punta a punta de un proyecto interno de ciberseguridad.",
       },
       {
         name: "University of Žilina",
-        period: "Mar. 2025 – Jun. 2025",
+        period: "Mar. 2025 - Jun. 2025",
         description:
           "Desarrollador Web en prácticas en la Universidad de Žilina, dentro de un proyecto Erasmus+. Me encargué del desarrollo de las webs de los laboratorios universitarios.",
       },
@@ -47,19 +47,19 @@ export const es = {
     education: [
       {
         name: "Especialización en Ciberseguridad Informática",
-        period: "Sep. 2025 – May. 2026",
+        period: "Sep. 2025 - May. 2026",
         description:
           "Formación avanzada en hacking ético, análisis forense y ciberseguridad en el IES Trassierra.",
       },
       {
         name: "CFGS Desarrollo de Aplicaciones Web",
-        period: "Sep. 2023 – May. 2025",
+        period: "Sep. 2023 - May. 2025",
         description:
           "Formación en Desarrollo de Aplicaciones Web en el IES Fidiana, con JavaScript, React, bases de datos y diseño web.",
       },
       {
         name: "CFGM Sistemas Microinformáticos y Redes",
-        period: "Sep. 2021 – May. 2023",
+        period: "Sep. 2021 - May. 2023",
         description:
           "Formación en Sistemas Microinformáticos y Redes en el IES Fidiana.",
       },
@@ -83,7 +83,7 @@ export const es = {
           "Gestión de enlaces con un motor de reglas condicionales. Cada enlace puede redirigir, bloquear, pedir contraseña o disparar un webhook según quién accede, desde dónde y cuándo.",
         href: "https://linkkk.dev/",
         tagline: "Enlaza con lógica. Sin límites.",
-        period: "Mar 2025 – Hoy",
+        period: "Mar 2025 - Hoy",
         why: "Lo construí para el TFG del grado y casi lo dejo ahí. Pero al presentarlo algo hizo clic, tenía potencial de verdad. Pasé el verano reconstruyéndolo en serio, seguí durante el siguiente curso y hoy sigo añadiendo cosas.",
         features: [
           "Reglas condicionales: país, dispositivo, hora, referrer",
@@ -100,7 +100,7 @@ export const es = {
           "Herramienta visual para crear contenido en redes sociales. Fondos degradados, animaciones, exportación de vídeo y soporte para mockups de iPhone.",
         href: "https://alvaroso.dev/moka/",
         tagline: "Contenido bonito, en segundos.",
-        period: "May 2026 – Hoy",
+        period: "May 2026 - Hoy",
         why: "Creaba contenido para redes y las exportaciones siempre quedaban sosas. Quería fondos bonitos, pero también poder animar y exportar vídeo, no solo imágenes estáticas. Nada hacía todo eso a la vez, así que lo construí yo. Aún en desarrollo, a punto de salir.",
         features: [
           "Editor de fondos degradados",
@@ -117,7 +117,7 @@ export const es = {
           "Entrenador de mecanografía online con modos multijugador. Compite contra otros, juega en equipos o supérate a ti mismo en varios modos de juego.",
         href: "https://alvaroso.dev/keypro/",
         tagline: "Escribe más rápido. Compite en serio.",
-        period: "Sep 2023 – Hoy",
+        period: "Sep 2023 - Hoy",
         why: "Este fue el que lo empezó todo. Antes de KeyPro nunca había tocado Node.js ni React. Construirlo fue cómo aprendí los dos.",
         features: [
           "Carreras multijugador en tiempo real",

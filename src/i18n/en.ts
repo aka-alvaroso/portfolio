@@ -1,9 +1,9 @@
 export const en = {
   meta: {
-    title: "Álvaro Barbero — Web Developer",
-    description: "Álvaro Barbero — Web Developer and Cybersecurity. Real software, built to last.",
-    ogDescription: "Web Developer & Cybersecurity from Spain. I build real software and products that last — from the first commit to deploy.",
-    ogImageAlt: "Álvaro Barbero — Web Developer and Cybersecurity",
+    title: "Álvaro Barbero - Web Developer",
+    description: "Álvaro Barbero - Web Developer and Cybersecurity. Real software, built to last.",
+    ogDescription: "Web Developer & Cybersecurity from Spain. I build real software and products that last - from the first commit to deploy.",
+    ogImageAlt: "Álvaro Barbero - Web Developer and Cybersecurity",
   },
   nav: {
     projects: "Projects",
@@ -32,13 +32,13 @@ export const en = {
     jobs: [
       {
         name: "AllPentesting",
-        period: "Jun. 2023 – May. 2026",
+        period: "Jun. 2023 - May. 2026",
         description:
           "Web Developer at AllPentesting since 2023, evolving from building client websites to taking full ownership of an internal cybersecurity project from zero to deployment.",
       },
       {
         name: "University of Žilina",
-        period: "Mar. 2025 – Jun. 2025",
+        period: "Mar. 2025 - Jun. 2025",
         description:
           "Web Developer Intern at the University of Žilina, part of an Erasmus+ project. Developing the university's lab websites.",
       },
@@ -46,19 +46,19 @@ export const en = {
     education: [
       {
         name: "IT Cybersecurity Specialization",
-        period: "Sep. 2025 – May. 2026",
+        period: "Sep. 2025 - May. 2026",
         description:
           "Learning advanced ethical hacking, forensics and cybersecurity at IES Trassierra.",
       },
       {
         name: "Higher Vocational Training DAW",
-        period: "Sep. 2023 – May. 2025",
+        period: "Sep. 2023 - May. 2025",
         description:
           "Learning Web Application Development at IES Fidiana, working with JavaScript, React, databases and web design.",
       },
       {
         name: "Intermediate Vocational Training",
-        period: "Sep. 2021 – May. 2023",
+        period: "Sep. 2021 - May. 2023",
         description:
           "Studying Microcomputer Systems and Networks (SMR) at IES Fidiana.",
       },
@@ -82,7 +82,7 @@ export const en = {
           "Link management with a conditional rules engine. Each link can redirect, block, require a password, or trigger a webhook based on who's accessing it, from where, and when.",
         href: "https://linkkk.dev/",
         tagline: "Smarter links. Total control.",
-        period: "Mar 2025 – Today",
+        period: "Mar 2025 - Today",
         why: "Built it for my DAW final project and almost left it at that. But after the presentation something clicked, it felt like it could be more. I spent the summer rebuilding it properly, kept going through the next year, and I'm still shipping features today.",
         features: [
           "Conditional rules: country, device, time, referrer",
@@ -99,7 +99,7 @@ export const en = {
           "Visual creator for social media content. Gradient backgrounds, animations, video export and iPhone mockup support.",
         href: "https://alvaroso.dev/moka/",
         tagline: "Beautiful content, built in seconds.",
-        period: "May 2026 – Today",
+        period: "May 2026 - Today",
         why: "I kept making content for social media and the exports always looked off. I wanted cool backgrounds, but also to animate things and export video, not just static images. Nothing did all of that, so I built it. Still in development, about to go live.",
         features: [
           "Gradient background editor",
@@ -116,7 +116,7 @@ export const en = {
           "Online typing trainer with multiplayer modes. Race against others, play in teams, or challenge yourself across multiple game modes.",
         href: "https://alvaroso.dev/keypro/",
         tagline: "Type faster. Race smarter.",
-        period: "Sep 2023 – Today",
+        period: "Sep 2023 - Today",
         why: "This one started everything. Before KeyPro I'd never touched Node.js or React. Building it was how I learned both.",
         features: [
           "Real-time multiplayer races",
