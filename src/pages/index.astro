@@ -1,16 +1,82 @@
 ---
-// Language detection — redirects client-side to /en/ or /es/
+// Language detection — redirects client-side to /en/ or /es/.
+// Crawlers (Facebook, WhatsApp, X, LinkedIn, opengraph.xyz) don't follow the
+// redirect, so full metadata lives here too, defaulting to English.
+const site = 'https://alvaroso.dev';
+const title = 'Álvaro Barbero — Web Developer';
+const description =
+  'Álvaro Barbero — Web Developer and Cybersecurity. Real software, built to last.';
+const ogDescription =
+  'Web Developer & Cybersecurity from Spain. I build real software and products that last — from the first commit to deploy.';
+const ogImage = `${site}/metadata.png`;
+const ogImageAlt = 'Álvaro Barbero — Web Developer and Cybersecurity';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Álvaro Barbero',
+  url: site,
+  image: ogImage,
+  jobTitle: 'Web Developer',
+  description,
+  sameAs: [
+    'https://go.alvaroso.dev/linkedin',
+    'https://go.alvaroso.dev/github',
+    'https://go.alvaroso.dev/twitter',
+  ],
+};
 ---
 
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+    <meta name="theme-color" content="#FEF9FF" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="web developer, cybersecurity, portfolio, Álvaro Barbero, desarrollador web, ciberseguridad" />
+    <meta name="author" content="Álvaro Barbero" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Hreflang -->
+    <link rel="canonical" href={`${site}/`} />
+    <link rel="alternate" hreflang="en" href={`${site}/en/`} />
+    <link rel="alternate" hreflang="es" href={`${site}/es/`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Álvaro Barbero" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:url" content={`${site}/`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={`${site}/`} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
+
     <!-- Fallback for no-JS: go to English -->
     <meta http-equiv="refresh" content="0;url=/en/" />
-    <title>Álvaro Barbero</title>
     <script is:inline>
       (function () {
         var lang = (navigator.language || navigator.languages?.[0] || 'en').toLowerCase();

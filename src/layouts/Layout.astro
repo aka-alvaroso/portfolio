@@ -8,6 +8,27 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+const site = 'https://alvaroso.dev';
+const canonical = `${site}/${lang}/`;
+const ogImage = `${site}/metadata.png`;
+const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
+const altLocale = lang === 'es' ? 'en_US' : 'es_ES';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Álvaro Barbero',
+  url: site,
+  image: ogImage,
+  jobTitle: lang === 'es' ? 'Desarrollador Web' : 'Web Developer',
+  description: t.meta.description,
+  sameAs: [
+    'https://go.alvaroso.dev/linkedin',
+    'https://go.alvaroso.dev/github',
+    'https://go.alvaroso.dev/twitter',
+  ],
+};
 ---
 
 <!doctype html>
@@ -34,32 +55,43 @@ const t = useTranslations(lang);
 
     <!-- SEO -->
     <meta name="description" content={t.meta.description} />
-    <meta name="keywords" content="web developer, cybersecurity, portfolio, Álvaro Barbero" />
+    <meta name="keywords" content="web developer, cybersecurity, portfolio, Álvaro Barbero, desarrollador web, ciberseguridad" />
     <meta name="author" content="Álvaro Barbero" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
     <!-- Hreflang -->
-    <link rel="canonical" href={`https://alvaroso.dev/${lang}/`} />
-    <link rel="alternate" hreflang="en" href="https://alvaroso.dev/en/" />
-    <link rel="alternate" hreflang="es" href="https://alvaroso.dev/es/" />
-    <link rel="alternate" hreflang="x-default" href="https://alvaroso.dev/" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={`${site}/en/`} />
+    <link rel="alternate" hreflang="es" href={`${site}/es/`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}/`} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`https://alvaroso.dev/${lang}/`} />
+    <meta property="og:site_name" content="Álvaro Barbero" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={altLocale} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={t.meta.title} />
     <meta property="og:description" content={t.meta.ogDescription} />
-    <meta property="og:image" content="https://alvaroso.dev/metadata.png" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="675" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t.meta.ogImageAlt} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={`https://alvaroso.dev/${lang}/`} />
-    <meta property="twitter:title" content={t.meta.title} />
-    <meta property="twitter:description" content={t.meta.ogDescription} />
-    <meta property="twitter:image" content="https://alvaroso.dev/metadata.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={t.meta.title} />
+    <meta name="twitter:description" content={t.meta.ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={t.meta.ogImageAlt} />
 
     <title>{t.meta.title}</title>
+
+    <!-- Structured data -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BX8DLL9EJ"></script>

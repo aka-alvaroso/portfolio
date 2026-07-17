@@ -2,7 +2,8 @@ export const en = {
   meta: {
     title: "Álvaro Barbero — Web Developer",
     description: "Álvaro Barbero — Web Developer and Cybersecurity. Real software, built to last.",
-    ogDescription: "Real software, built to last.",
+    ogDescription: "Web Developer & Cybersecurity from Spain. I build real software and products that last — from the first commit to deploy.",
+    ogImageAlt: "Álvaro Barbero — Web Developer and Cybersecurity",
   },
   nav: {
     projects: "Projects",

@@ -3,7 +3,8 @@ export const es = {
     title: "Álvaro Barbero — Desarrollador Web",
     description:
       "Álvaro Barbero — Desarrollo web y ciberseguridad. Software que funciona, productos que duran.",
-    ogDescription: "Software que funciona. Productos que duran.",
+    ogDescription: "Desarrollo web y ciberseguridad desde España. Creo software real y productos que perduran, del primer commit al despliegue.",
+    ogImageAlt: "Álvaro Barbero — Desarrollo web y ciberseguridad",
   },
   nav: {
     projects: "Proyectos",
